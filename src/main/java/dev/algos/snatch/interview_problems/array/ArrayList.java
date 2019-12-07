@@ -1,6 +1,9 @@
 package dev.algos.snatch.interview_problems.array;
 
-public class ArrayList<E> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class ArrayList<E> implements Iterable<E> {
     private static final int DEFAULT_CAPACITY = 10;
     private int size;
     private Object[] data;
@@ -22,7 +25,7 @@ public class ArrayList<E> {
 
     public boolean add(E element) {
         if (this.size == this.data.length) {
-            grow();
+            resize((this.data.length * 3) / 2 + 1);
         }
         this.data[size++] = element;
         return true;
@@ -39,9 +42,11 @@ public class ArrayList<E> {
             }
             this.data[--size] = null;
         }
+        if (this.size > 0 && this.size == this.data.length / 4) {
+            resize(this.data.length / 2);
+        }
         return oldValue;
     }
-
 
     public E get(int index) {
         validate(index);
@@ -58,15 +63,13 @@ public class ArrayList<E> {
         }
     }
 
-    private void grow() {
-        int newSize = (this.data.length * 3) / 2 + 1;
-        Object[] newArray = new Object[newSize];
-        for (int i = 0; i < this.data.length; i++) {
-            newArray[i] = this.data[i];
+    private void resize(int capacity) {
+        final Object[] copy = new Object[capacity];
+        for (int i = 0; i < this.size; i++) {
+            copy[i] = this.data[i];
         }
-        this.data = newArray;
+        this.data = copy;
     }
-
 
     @Override
     public String toString() {
@@ -79,4 +82,50 @@ public class ArrayList<E> {
         }
         return sb.append("]").toString();
     }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayListIterator();
+    }
+
+    public Iterator<E> reverseIterator() {
+        return new ArrayListReverseIterator();
+    }
+
+    private class ArrayListIterator implements Iterator<E> {
+
+        private int index;
+
+        @Override
+        public boolean hasNext() {
+            return index < size();
+        }
+
+        @Override
+        public E next() {
+            if (index >= size()) {
+                throw new NoSuchElementException();
+            }
+            return (E) data[index++];
+        }
+    }
+
+    private class ArrayListReverseIterator implements Iterator<E> {
+
+        private int index = size() - 1;
+
+        @Override
+        public boolean hasNext() {
+            return index >= 0;
+        }
+
+        @Override
+        public E next() {
+            if (index < 0) {
+                throw new NoSuchElementException();
+            }
+            return (E) data[index--];
+        }
+    }
+
 }
