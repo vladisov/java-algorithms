@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.binary_search;
 
 /**
  * ### [153.Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
@@ -28,7 +28,7 @@ package dev.algos.snatch.interview_problems.array;
  * Output: 0
  * ```
  */
-class FindMinimumInRotatedSortedArray {
+public class FindMinimumInRotatedSortedArray {
 
     /**
      * Time complexity
@@ -36,7 +36,7 @@ class FindMinimumInRotatedSortedArray {
      * Space complexity
      * O(1)
      */
-    int findMin(int[] nums) {
+    public int findMin(int[] nums) {
         if (nums.length == 0) return -1;
         int hi = nums.length - 1;
         int lo = 0;

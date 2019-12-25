@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.sliding_window;
 
 /**
  * ### [53.Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
@@ -28,7 +28,7 @@ public class MaximumSubarray {
      * Space complexity
      * O(1)
      */
-    int maxSubArray(int[] nums) {
+    public int maxSubArray(int[] nums) {
         if (nums.length == 0) return 0;
         int i = 0, j = 1, currMax = nums[0], max = currMax;
         while (j < nums.length) {

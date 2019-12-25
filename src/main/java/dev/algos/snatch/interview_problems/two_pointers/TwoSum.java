@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.two_pointers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.util.Map;
  * return [0, 1].
  * ```
  */
-class TwoSum {
+public class TwoSum {
 
 
     /**
@@ -26,7 +26,7 @@ class TwoSum {
      * Space complexity
      * O(n)
      */
-    int[] twoSum(int[] nums, int target) {
+    public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target - nums[i])) {

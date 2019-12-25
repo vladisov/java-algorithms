@@ -1,5 +1,6 @@
 package dev.algos.snatch.interview_problems.array;
 
+import dev.algos.snatch.interview_problems.two_pointers.TwoSum;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

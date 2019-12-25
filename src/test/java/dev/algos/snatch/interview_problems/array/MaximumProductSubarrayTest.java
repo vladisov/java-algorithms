@@ -1,5 +1,6 @@
 package dev.algos.snatch.interview_problems.array;
 
+import dev.algos.snatch.interview_problems.dp.MaximumProductSubarray;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

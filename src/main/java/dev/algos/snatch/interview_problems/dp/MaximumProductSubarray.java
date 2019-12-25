@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.dp;
 
 /**
  * ### [152.Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
@@ -31,7 +31,7 @@ public class MaximumProductSubarray {
      * Space complexity
      * O(n)
      */
-    int maxProduct(int[] nums) {
+    public int maxProduct(int[] nums) {
         if (nums.length == 0) return 0;
         int n = nums.length;
         int[] min = new int[n];
