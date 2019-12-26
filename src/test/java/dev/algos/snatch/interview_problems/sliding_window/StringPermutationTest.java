@@ -1,6 +1,5 @@
-package dev.algos.snatch.interview_problems.string;
+package dev.algos.snatch.interview_problems.sliding_window;
 
-import dev.algos.snatch.interview_problems.sliding_window.StringPermutation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

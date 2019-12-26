@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.hash_table;
 
 import java.util.HashSet;
 import java.util.Set;
