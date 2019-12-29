@@ -45,7 +45,7 @@ public class ThreeSum {
                 while (j < k) {
                     int sum = nums[i] + nums[j] + nums[k];
                     if (sum == 0) {
-                        result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                        result.add(List.of(nums[i], nums[j], nums[k]));
                     }
                     if (sum <= 0) {
                         int start = j;
