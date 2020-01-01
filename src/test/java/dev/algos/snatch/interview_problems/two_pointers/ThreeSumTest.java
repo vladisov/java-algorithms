@@ -14,7 +14,6 @@ import static org.hamcrest.Matchers.hasSize;
  */
 class ThreeSumTest {
 
-
     private ThreeSum instance;
 
     @BeforeEach
