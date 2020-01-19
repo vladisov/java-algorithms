@@ -39,4 +39,25 @@ public class LongestSubarrayWithOnesAfterReplacement {
         }
         return len;
     }
+
+    int findLength1(int[] arr, int k) {
+        int windowStart = 0;
+        int maxOnes = 0;
+        int result = 0;
+
+        for (int windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+            if (arr[windowEnd] == 1) {
+                maxOnes++;
+            }
+            if (windowEnd - windowStart + 1 - maxOnes > k) {
+                if (arr[windowStart] == 1) {
+                    maxOnes--;
+                }
+                windowStart++;
+            }
+            result = Math.max(result, windowEnd - windowStart + 1);
+        }
+
+        return result;
+    }
 }
