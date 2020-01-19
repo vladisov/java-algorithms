@@ -1,6 +1,8 @@
 package dev.algos.snatch.interview_problems.sliding_window;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -55,5 +57,20 @@ public class NoRepeatSubstring {
             maxLen = Math.max(maxLen, set.size());
         }
         return maxLen;
+    }
+
+    int findLength1(String str) {
+        Map<Character, Integer> charIndexMap = new HashMap<>();
+        int windowStart = 0, max = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (charIndexMap.containsKey(c)) {
+                windowStart = Math.max(windowStart, charIndexMap.get(c));
+            }
+            charIndexMap.put(c, i + 1);
+            max = Math.max(max, i - windowStart + 1);
+        }
+        return max;
     }
 }

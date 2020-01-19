@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.gss.two_pointers;
+package dev.algos.snatch.interview_problems.two_pointers;
 
 import org.junit.jupiter.api.Test;
 

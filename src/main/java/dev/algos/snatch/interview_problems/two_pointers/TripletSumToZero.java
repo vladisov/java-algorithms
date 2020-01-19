@@ -1,11 +1,12 @@
-package dev.algos.snatch.interview_problems.gss.two_pointers;
+package dev.algos.snatch.interview_problems.two_pointers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Given an array of unsorted numbers, find all unique triplets in it that add up to zero.
+ * Given an array of unsorted numbers,
+ * find all unique triplets in it that add up to zero.
  */
 class TripletSumToZero {
 

@@ -20,10 +20,11 @@ public class AverageSumSubarrayOfSizeK {
         double[] res = new double[arr.length - k + 1];
         double sum = 0;
         for (int hi = 0; hi < arr.length; hi++) {
-            sum += arr[hi];
+            sum += arr[hi]; // add the next element
+            // slide the window, we don't need to slide if we've not hit the required window size of 'k'
             if (hi >= k - 1) {
-                res[lo] = sum / k;
-                sum -= arr[lo++];
+                res[lo] = sum / k; // calculate the average
+                sum -= arr[lo++]; // subtract the element going out & slide the window ahead
             }
         }
         return res;
