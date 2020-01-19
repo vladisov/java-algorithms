@@ -52,4 +52,26 @@ public class ThreeSumCloseToTarget {
         }
         return minSum;
     }
+
+    int searchTriplet1(int[] arr, int targetSum) {
+        Arrays.sort(arr);
+        int smallestDiff = Integer.MAX_VALUE;
+        for (int i = 0; i < arr.length - 2; i++) {
+            int left = i + 1;
+            int right = arr.length - 1;
+
+            while (left < right) {
+                int diff = targetSum - arr[i] - arr[left] - arr[right];
+                if (diff == 0) {
+                    return targetSum;
+                }
+                if (Math.abs(diff) < Math.abs(smallestDiff)) {
+                    smallestDiff = diff;
+                }
+                if (diff > 0) left++;
+                if (diff < 0) right--;
+            }
+        }
+        return targetSum - smallestDiff;
+    }
 }

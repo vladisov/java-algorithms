@@ -34,4 +34,23 @@ public class SortedArraySquares {
     private int sqr(int num) {
         return num * num;
     }
+
+    int[] makeSquares1(int[] arr) {
+        var length = arr.length - 1;
+        int[] squares = new int[arr.length];
+        int left = 0;
+        int right = length;
+        while (left <= right) {
+            int leftSq = arr[left] * arr[left];
+            int rightSq = arr[right] * arr[right];
+            if (leftSq < rightSq) {
+                squares[length--] = rightSq;
+                right--;
+            } else {
+                squares[length--] = leftSq;
+                left++;
+            }
+        }
+        return squares;
+    }
 }

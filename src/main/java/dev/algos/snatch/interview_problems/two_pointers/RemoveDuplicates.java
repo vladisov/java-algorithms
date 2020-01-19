@@ -30,4 +30,18 @@ public class RemoveDuplicates {
         }
         return count;
     }
+
+    int remove1(int[] arr) {
+        int result = arr.length;
+        int pointer = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[pointer] == arr[i]) {
+                result--;
+            }
+            if (arr[pointer] != arr[i]) {
+                pointer = i;
+            }
+        }
+        return result;
+    }
 }

@@ -50,4 +50,24 @@ public class CharacterReplacement {
         }
         return max;
     }
+
+    int findLength1(String str, int k) {
+        if (str == null) return 0;
+        int windowStart = 0, max = 0, maxRepeatLetterCount = 0;
+        Map<Character, Integer> letterFrequencyMap = new HashMap<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            var c = str.charAt(i);
+            letterFrequencyMap.put(c, letterFrequencyMap.getOrDefault(c, 0) + 1);
+            maxRepeatLetterCount = Math.max(maxRepeatLetterCount, letterFrequencyMap.get(c));
+
+            if (i - windowStart + 1 - maxRepeatLetterCount > k) {
+                var charAtStart = str.charAt(windowStart);
+                letterFrequencyMap.put(charAtStart, letterFrequencyMap.get(charAtStart) - 1);
+                windowStart++;
+            }
+            max = Math.max(max, i - windowStart + 1);
+        }
+        return max;
+    }
 }
