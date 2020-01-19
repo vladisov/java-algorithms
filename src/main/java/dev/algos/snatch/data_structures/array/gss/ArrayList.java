@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.data_structures.array.gss;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

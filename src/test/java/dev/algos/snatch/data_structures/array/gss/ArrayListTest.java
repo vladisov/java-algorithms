@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.data_structures.array.gss;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
