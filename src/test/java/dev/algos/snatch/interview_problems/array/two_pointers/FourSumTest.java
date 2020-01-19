@@ -1,5 +1,6 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.array.two_pointers;
 
+import dev.algos.snatch.interview_problems.array.two_pointers.FourSum;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -12,7 +13,7 @@ class FourSumTest {
     private FourSum solution = new FourSum();
 
     @Test
-    void threeSum() {
+    void fourSum() {
         assertThat(solution.fourSum(new int[]{0,0,0,0}, 0))
                 .containsExactly(Arrays.asList(0,0,0,0));
 

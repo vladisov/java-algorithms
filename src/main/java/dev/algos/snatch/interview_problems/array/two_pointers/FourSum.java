@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.array.two_pointers;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -17,16 +17,17 @@ class TripletWithSmallerSum {
         for (int i = 0; i < arr.length - 2; i++) {
             int left = i + 1;
             int right = arr.length - 1;
+
             while (left < right) {
                 int sum = arr[i] + arr[left] + arr[right];
                 if (sum < target) {
-                    count+= right - left;
+                    count += right - left;
+                    left++;
+                } else {
                     right--;
                 }
-                if (sum > target) {
-                    left++;
-                }
             }
+
         }
         return count;
     }
