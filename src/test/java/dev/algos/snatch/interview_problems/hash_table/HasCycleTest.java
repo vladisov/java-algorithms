@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class LinkedListCycleTest {
+class HasCycleTest {
 
-    private LinkedListCycle instance;
+    private HasCycle instance;
     private ListNode<Integer> head;
 
     @BeforeEach
     void setUp() {
-        instance = new LinkedListCycle();
+        instance = new HasCycle();
 
         head = new ListNode<>(1);
         head.next = new ListNode<>(2);

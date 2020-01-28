@@ -5,7 +5,7 @@ import dev.algos.snatch.data_structures.linked_list.ListNode;
 /**
  * Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
  */
-public class LinkedListCycle {
+public class HasCycle {
 
     /**
      * Time complexity O(n)
