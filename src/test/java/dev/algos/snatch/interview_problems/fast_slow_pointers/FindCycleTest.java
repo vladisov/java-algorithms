@@ -1,20 +1,21 @@
-package dev.algos.snatch.interview_problems.hash_table;
+package dev.algos.snatch.interview_problems.fast_slow_pointers;
 
 import dev.algos.snatch.data_structures.linked_list.ListNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class HasCycleTest {
+class FindCycleTest {
 
-    private HasCycle instance;
+    private FindCycle instance;
     private ListNode<Integer> head;
 
     @BeforeEach
     void setUp() {
-        instance = new HasCycle();
+        instance = new FindCycle();
 
         head = new ListNode<>(1);
         head.next = new ListNode<>(2);
@@ -25,19 +26,23 @@ class HasCycleTest {
     }
 
     @Test
-    void hasCycleNotFound() {
-        assertThat(instance.hasCycle(head), equalTo(false));
+    void findCycleNotFound() {
+        ListNode cycle = instance.findCycle(head);
+        assertThat(cycle, nullValue());
     }
 
     @Test
-    void hasCycleExists() {
+    void findCycleExists() {
         head.next.next.next.next.next.next = head.next.next;
-        assertThat(instance.hasCycle(head), equalTo(true));
+        ListNode cycle = instance.findCycle(head);
+        assertThat(cycle, is(head.next.next));
     }
 
     @Test
-    void hasCycleExists2() {
+    void findCycleExists2() {
         head.next.next.next.next.next.next = head.next.next.next;
-        assertThat(instance.hasCycle(head), equalTo(true));
+        ListNode cycle = instance.findCycle(head);
+        assertThat(cycle, is(head.next.next.next));
     }
+
 }

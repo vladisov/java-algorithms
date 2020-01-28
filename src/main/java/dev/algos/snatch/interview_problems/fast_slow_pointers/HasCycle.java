@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.hash_table;
+package dev.algos.snatch.interview_problems.fast_slow_pointers;
 
 import dev.algos.snatch.data_structures.linked_list.ListNode;
 

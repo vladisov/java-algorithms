@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.hash_table;
+package dev.algos.snatch.interview_problems.fast_slow_pointers;
 
 import dev.algos.snatch.data_structures.linked_list.ListNode;
 
@@ -7,28 +7,6 @@ import dev.algos.snatch.data_structures.linked_list.ListNode;
  * Given the head of a Singly LinkedList that contains a cycle, write a function to find the starting node of the cycle.
  */
 public class FindCycle {
-
-    /**
-     * Time complexity O(n)
-     * Space complexity O(1)
-     */
-    public ListNode findCycle(ListNode head) {
-        if (head == null || head.next == null) {
-            return null;
-        }
-        var fast = head;
-        var slow = head;
-        var cycleLen = 0;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-            if (slow == fast) {
-                cycleLen = calcCycleLen(slow);
-                break;
-            }
-        }
-        return findCycle(cycleLen, head);
-    }
 
     /**
      * Time complexity O(n)
@@ -54,6 +32,28 @@ public class FindCycle {
             }
         }
         return null;
+    }
+
+    /**
+     * Time complexity O(n)
+     * Space complexity O(1)
+     */
+    public ListNode findCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        var fast = head;
+        var slow = head;
+        var cycleLen = 0;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == fast) {
+                cycleLen = calcCycleLen(slow);
+                break;
+            }
+        }
+        return findCycle(cycleLen, head);
     }
 
     private ListNode findCycle(int len, ListNode head) {
