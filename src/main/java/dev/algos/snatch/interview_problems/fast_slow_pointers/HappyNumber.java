@@ -35,6 +35,10 @@ public class HappyNumber {
         return find(String.valueOf(sum), visited);
     }
 
+    /**
+     * Time complexity O(n)
+     * Space complexity O(1)
+     */
     boolean findWithoutSpace(int num) {
         int fast = num;
         int slow = num;

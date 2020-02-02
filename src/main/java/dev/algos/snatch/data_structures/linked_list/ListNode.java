@@ -7,4 +7,16 @@ public class ListNode<T> {
     public ListNode(T value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(value);
+        while (next != null) {
+            sb.append(",");
+            sb.append(next.value);
+            next = next.next;
+        }
+        return sb.toString();
+    }
 }
