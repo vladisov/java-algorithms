@@ -1,5 +1,7 @@
 package dev.algos.snatch.data_structures.linked_list;
 
+import java.util.Objects;
+
 public class SinglyLinkedList<T> {
     private ListNode<T> head;
     private int size;
@@ -32,7 +34,7 @@ public class SinglyLinkedList<T> {
 
     public void insertAfter(T value, T previous) {
         if (isEmpty()) {
-            throw new IllegalArgumentException(String.format("Node %s has not been found in the list", previous.toString()));
+            insertAtEnd(value);
         }
         ListNode<T> node = new ListNode<>(value);
         var curr = head;
@@ -48,8 +50,45 @@ public class SinglyLinkedList<T> {
         }
     }
 
-    public boolean remove(int index) {
+    public boolean remove(T value) {
+        ListNode<T> curr = head, prev = null;
+        while (curr != null) {
+            if (curr.value.equals(value)) {
+                if (prev == null) {
+                    head = curr.next;
+                } else {
+                    prev.next = curr.next;
+                }
+                size--;
+                return true;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
         return false;
+    }
+
+    public boolean remove(int index) {
+        if (index >= size) {
+            throw new IndexOutOfBoundsException(index);
+        }
+        int i = 0;
+        ListNode<T> curr = head, prev = null;
+        while (curr != null) {
+            if (i == index) {
+                if (prev == null) {
+                    head = curr.next;
+                } else {
+                    prev.next = curr.next;
+                }
+                break;
+            }
+            i++;
+            prev = curr;
+            curr = curr.next;
+        }
+        size--;
+        return true;
     }
 
     public int size() {
@@ -60,18 +99,37 @@ public class SinglyLinkedList<T> {
         return size == 0;
     }
 
-    public void printList() {
+    public T get(int index) {
+        if (index >= size) {
+            throw new IndexOutOfBoundsException(index);
+        }
+        var curr = head;
+        int i = 0;
+        while (curr != null) {
+            if (i == index) {
+                break;
+            }
+            i++;
+            curr = curr.next;
+        }
+        return Objects.requireNonNull(curr).value;
+    }
+
+    @Override
+    public String toString() {
+        var sb = new StringBuilder();
         if (isEmpty()) {
-            System.out.println("List is Empty!");
-            return;
+            sb.append("List is Empty!");
+            return sb.toString();
         }
 
         ListNode<T> temp = head;
-        System.out.print("List : ");
         while (temp.next != null) {
-            System.out.print(temp.value.toString() + " -> ");
+            sb.append(temp.value.toString())
+                    .append(" -> ");
             temp = temp.next;
         }
-        System.out.println(temp.value.toString() + " -> null");
+        return sb.append(temp.value.toString())
+                .toString();
     }
 }
