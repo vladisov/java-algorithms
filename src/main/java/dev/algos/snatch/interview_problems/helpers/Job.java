@@ -3,32 +3,25 @@ package dev.algos.snatch.interview_problems.helpers;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Interval {
+public class Job {
     private int start;
     private int end;
+    private int cpuLoad;
 
-    public Interval(int start, int end) {
+    public Job(int start, int end, int cpuLoad) {
         this.start = start;
         this.end = end;
+        this.cpuLoad = cpuLoad;
     }
 
-    public static List<Interval> buildList(String str) {
-        List<Interval> result = new LinkedList<>();
+    public static List<Job> buildList(String str) {
+        List<Job> result = new LinkedList<>();
         str = str.substring(1, str.length() - 1);
         String[] split = str.split("],\\s\\[");
         for (String s : split) {
             String replaced = s.replaceAll("[\\[\\]]", "");
             String[] numbers = replaced.split(",\\s*");
-            result.add(new Interval(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1])));
-        }
-        return result;
-    }
-
-    public static Interval[] buildArray(String str) {
-        List<Interval> intervals = buildList(str);
-        Interval[] result = new Interval[intervals.size()];
-        for (int i = 0; i < intervals.size(); i++) {
-            result[i] = intervals.get(i);
+            result.add(new Job(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]), Integer.parseInt(numbers[2])));
         }
         return result;
     }
@@ -41,12 +34,18 @@ public class Interval {
         return end;
     }
 
+    public int getCpuLoad() {
+        return cpuLoad;
+    }
+
     @Override
     public String toString() {
         return "[" +
                 start +
                 ", " +
                 end +
+                ", " +
+                cpuLoad +
                 "]";
     }
 };

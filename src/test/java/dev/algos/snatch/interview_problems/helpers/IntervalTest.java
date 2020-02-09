@@ -15,4 +15,11 @@ class IntervalTest {
         assertThat(intervals.size(), equalTo(3));
         assertThat(intervals.toString(), equalTo("[[1, 3], [5, 6], [7, 9]]"));
     }
+
+    @Test
+    void testBuildListWoutSpaces() {
+        List<Interval> intervals = Interval.buildList("[[1,3], [5,6], [7,9]]");
+        assertThat(intervals.size(), equalTo(3));
+        assertThat(intervals.toString(), equalTo("[[1, 3], [5, 6], [7, 9]]"));
+    }
 }
