@@ -31,7 +31,8 @@ class CycleInCircularArrayTest {
 
     @Test
     void testLoopDoesNotExist2() {
-        boolean result = instance.loopExists(new int[]{-1, 2});
+//        boolean result = instance.loopExists(new int[]{-1, 2});
+        boolean result = instance.circularArrayLoop(new int[]{-1, 2});
         assertThat(result, equalTo(false));
     }
 }

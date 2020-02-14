@@ -63,4 +63,54 @@ public class CycleInCircularArray {
 
         return false;
     }
+
+    public boolean circularArrayLoop(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            if (hasCycle(nums, i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hasCycle(int[] nums, int i) {
+        boolean dir = nums[i] > 0;
+        int slow = i, fast = i;
+        while (slow != -1 && fast != -1 && slow != fast) {
+            slow = getNext(nums, slow, dir);
+            fast = getNext(nums, fast, dir);
+            if (fast != -1) {
+                fast = getNext(nums, fast, dir);
+            }
+        }
+        if (slow != -1 && slow == fast) {
+            return true;
+        }
+        return false;
+    }
+
+    private int getNext(int[] nums, int i, boolean positive) {
+        boolean direction = nums[i] > 0;
+        if (positive != direction) {
+            return -1;
+        }
+        int add = nums[i];
+        //[2,-3,1,2,2]
+        int next;
+        if (Math.abs(add) >= nums.length) {
+            add = nums.length % add;
+        }
+        if (add > 0 && add + i >= nums.length) {
+            next = add + i - nums.length;
+        } else if (add + i < 0) {
+            next = nums.length - (i + add);
+        } else {
+            next = add + i;
+        }
+
+        if (next == i) {
+            return -1;
+        }
+        return next;
+    }
 }
