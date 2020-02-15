@@ -22,7 +22,8 @@ class SudokuTest {
                 {'.', '1', '.', '2', '.', '.', '.', '.', '.'},
                 {'.', '2', '.', '.', '3', '.', '.', '.', '.'}
         };
-        boolean result = instance.sudoku2(grid);
+//        boolean result = instance.isValidSudoku(grid);
+        boolean result = instance.isValidSudokuLC(grid);
         assertFalse(result);
     }
 
@@ -40,7 +41,8 @@ class SudokuTest {
                 {'.', '.', '.', '.', '.', '7', '.', '.', '.'},
                 {'.', '.', '.', '5', '.', '.', '.', '7', '.'}
         };
-        boolean result = instance.sudoku2(grid);
+//        boolean result = instance.isValidSudoku(grid);
+        boolean result = instance.isValidSudokuLC(grid);
         assertTrue(result);
     }
 }

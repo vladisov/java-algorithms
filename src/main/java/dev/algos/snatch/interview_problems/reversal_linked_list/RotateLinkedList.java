@@ -2,9 +2,21 @@ package dev.algos.snatch.interview_problems.reversal_linked_list;
 
 import dev.algos.snatch.data_structures.linked_list.ListNode;
 
-//TODO
+/**
+ * Given the head of a Singly LinkedList and a number ‘k’, rotate the LinkedList to the right by ‘k’ nodes.
+ * <p>
+ * Input: 1->2->3->4->5->NULL, k = 2
+ * Output: 4->5->1->2->3->NULL
+ * Explanation:
+ * rotate 1 steps to the right: 5->1->2->3->4->NULL
+ * rotate 2 steps to the right: 4->5->1->2->3->NULL
+ */
 public class RotateLinkedList {
 
+    /**
+     * Time complexity O(n)
+     * Space complexity O(1)
+     */
     public ListNode rotate(ListNode head, int rotations) {
         if (head == null || head.next == null || rotations <= 0)
             return head;

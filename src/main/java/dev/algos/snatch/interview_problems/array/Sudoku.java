@@ -1,82 +1,92 @@
 package dev.algos.snatch.interview_problems.array;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-//TODO sdelal huinyu
 public class Sudoku {
 
-    boolean sudoku2(char[][] grid) {
-        int n = grid.length;
-        Map<Integer, Set<Character>> map = new HashMap<>();
-        for (int i = 0; i < n - 3; i++) {
-            map.clear();
-            if (!addFirstGrid(grid, map, i)) {
+    /**
+     * Time complexity O(n^2)
+     * Space complexity O(n)
+     */
+    public boolean isValidSudokuLC(char[][] board) {
+        Set<String> seen = new HashSet<>();
+        for (int i = 0; i < 9; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                char number = board[i][j];
+                if (number != '.')
+                    if (!seen.add(number + " in row " + i) ||
+                            !seen.add(number + " in column " + j) ||
+                            !seen.add(number + " in block " + i / 3 + "-" + j / 3))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    /*
+        Naive solution
+     */
+    public boolean isValidSudoku(char[][] board) {
+        int n = board.length; // 9
+        for (int i = 0; i < n; i++) {
+            if (!validateRow(board, i) || !validateCol(board, i)) {
                 return false;
             }
-            for (int j = 3; j < n; j++) {
-                if (!appendRow(grid, map, j, i)) {
+        }
+        for (int i = 0; i < n; i += 3) {
+            for (int j = 0; j < n; j += 3) {
+                if (!validateGrid(board, i, j)) {
                     return false;
                 }
-            }
-        }
-        return false;
-    }
-
-    private boolean appendRow(char[][] grid, Map<Integer, Set<Character>> map, int row, int col) {
-        map.remove(0);
-        for (int k = 0; k < 2; k++) {
-            map.put(k, map.get(k + 1));
-        }
-        map.remove(2);
-        int n = col + 3;
-        while (col < n) {
-            char c = grid[row][col++];
-            if (c != '.') {
-                if (contains(map, c)) {
-                    return false;
-                } else {
-                    map.computeIfAbsent(2, (index) -> new HashSet<>()).add(c);
-                }
-            } else if (!map.containsKey(2)) {
-                map.put(2, new HashSet<>());
             }
         }
         return true;
     }
 
 
-    private boolean addFirstGrid(char[][] grid, Map<Integer, Set<Character>> map, int col) {
-        int n = col + 3;
-        for (int i = 0; i < 3; i++) {
-            for (int j = col; j < n; j++) {
-                char c = grid[i][j];
+    private boolean validateGrid(char[][] board, int row, int col) {
+        Set<Character> set = new HashSet<>();
+        for (int i = row; i < row + 3; i++) {
+            for (int j = col; j < col + 3; j++) {
+                char c = board[i][j];
                 if (c != '.') {
-                    if (contains(map, c)) {
+                    if (set.contains(c)) {
                         return false;
-                    } else {
-                        map.computeIfAbsent(i, (index) -> new HashSet<>()).add(c);
                     }
-                } else if (!map.containsKey(i)) {
-                    map.put(i, new HashSet<>());
+                    set.add(c);
                 }
             }
         }
         return true;
     }
 
-    private boolean contains(Map<Integer, Set<Character>> map, char c) {
-        if (map.isEmpty()) {
-            return false;
-        }
-        for (Set<Character> set : map.values()) {
-            if (set.contains(c)) {
-                return true;
+    private boolean validateCol(char[][] board, int i) {
+        Set<Character> set = new HashSet<>();
+        for (int j = 0; j < board.length; j++) {
+            char c = board[j][i];
+            if (c != '.') {
+                if (set.contains(c)) {
+                    return false;
+                }
+                set.add(c);
             }
         }
-        return false;
+        return true;
+    }
+
+    private boolean validateRow(char[][] board, int i) {
+        Set<Character> set = new HashSet<>();
+        for (int j = 0; j < board.length; j++) {
+            char c = board[i][j];
+            if (c != '.') {
+                if (set.contains(c)) {
+                    return false;
+                }
+                set.add(c);
+            }
+        }
+        return true;
     }
 
 }
