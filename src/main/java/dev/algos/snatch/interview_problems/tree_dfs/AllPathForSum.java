@@ -32,7 +32,7 @@ import java.util.Stack;
  */
 public class AllPathForSum {
 
-    //TODO compl
+    //TODO complexity
     public List<List<Integer>> pathSumRec(TreeNode root, int sum) {
         if (root == null) return new ArrayList<>();
         List<List<Integer>> result = new ArrayList<>();
