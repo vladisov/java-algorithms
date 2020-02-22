@@ -22,7 +22,6 @@ import java.util.Queue;
  * \     \
  * 5     4       <---
  */
-//TODO Test
 public class BinaryTreeRightSideView {
 
     /**

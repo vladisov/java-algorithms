@@ -6,6 +6,19 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+/**
+ * Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+ * <p>
+ * Example:
+ * <p>
+ * Input:
+ * [
+ * 1->4->5,
+ * 1->3->4,
+ * 2->6
+ * ]
+ * Output: 1->1->2->3->4->4->5->6
+ */
 public class MergeKSortedLists {
 
     /**
@@ -20,7 +33,8 @@ public class MergeKSortedLists {
         while (!queue.isEmpty()) {
             var node = queue.poll();
             curr.next = node;
-            queue.add(node.next);
+            if (node.next != null)
+                queue.add(node.next);
             curr = curr.next;
         }
         return dummyNode.next;

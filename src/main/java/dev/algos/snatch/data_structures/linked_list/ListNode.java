@@ -12,10 +12,11 @@ public class ListNode<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(value);
-        while (next != null) {
+        var nextNode = this.next;
+        while (nextNode != null) {
             sb.append(",");
-            sb.append(next.value);
-            next = next.next;
+            sb.append(nextNode.value);
+            nextNode = nextNode.next;
         }
         return sb.toString();
     }

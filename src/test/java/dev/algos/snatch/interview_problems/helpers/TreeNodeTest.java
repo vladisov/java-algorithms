@@ -6,7 +6,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.nullValue;
 
-//TODO test
 class TreeNodeTest {
 
     @Test
@@ -19,10 +18,5 @@ class TreeNodeTest {
     void testParseEmptyListString() {
         TreeNode root = TreeNode.parseFromLevelOrder("[]");
         assertThat(root, nullValue());
-    }
-
-    @Test
-    void testToStringInOrder() {
-
     }
 }

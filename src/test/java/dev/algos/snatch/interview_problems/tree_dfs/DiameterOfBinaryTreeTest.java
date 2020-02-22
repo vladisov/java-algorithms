@@ -8,7 +8,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 class DiameterOfBinaryTreeTest {
 
-
     private DiameterOfBinaryTree instance = new DiameterOfBinaryTree();
 
     @Test

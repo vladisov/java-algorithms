@@ -7,6 +7,10 @@ import dev.algos.snatch.interview_problems.helpers.TreeNode;
  */
 public class PathWithGivenSequence {
 
+    /**
+     * Time complexity O(h) = O(n)
+     * Space complexity O(h) = O(n)
+     */
     public boolean findPath(TreeNode root, int[] sequence) {
         if (root == null) return sequence.length == 0;
 
