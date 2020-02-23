@@ -29,6 +29,11 @@ import java.util.PriorityQueue;
  * [1, 2, -1, 3, 5] -> median is 3.0
  */
 public class SlidingWindowMedian {
+
+    /**
+     * Time complexity O(N*K) since removing takes O(K) and iterating O(N)
+     * Space complexity O(k)
+     */
     public double[] medianSlidingWindow(int[] nums, int k) {
         final PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         final PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
