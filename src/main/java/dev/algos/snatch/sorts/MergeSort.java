@@ -1,15 +1,6 @@
 package dev.algos.snatch.sorts;
 
-import java.util.Arrays;
-
 public class MergeSort {
-
-    public static void main(String[] args) {
-        var arr = new int[]{1, 5, 6, 2, 8, 4, 7};
-        var sort = new MergeSort();
-        sort.sort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
 
     public void sort(int[] arr) {
         sort(arr, 0, arr.length - 1);
@@ -47,7 +38,6 @@ public class MergeSort {
         while (k < left.length) {
             arr[i++] = left[k++];
         }
-
 
         while (m < right.length) {
             arr[i++] = right[m++];

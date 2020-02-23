@@ -2,11 +2,11 @@ package dev.algos.snatch.interview_problems.two_heaps;
 
 import java.util.PriorityQueue;
 
-public class MedianOfNumberStream2 {
+public class MedianFinder2 {
     PriorityQueue<Integer> maxHeap; //containing first half of numbers
     PriorityQueue<Integer> minHeap; //containing second half of numbers
 
-    public MedianOfNumberStream2() {
+    public MedianFinder2() {
         maxHeap = new PriorityQueue<>((a, b) -> b - a);
         minHeap = new PriorityQueue<>((a, b) -> a - b);
     }
