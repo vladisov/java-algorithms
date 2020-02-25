@@ -3,12 +3,21 @@ package dev.algos.snatch.data_structures.linked_list;
 import dev.algos.snatch.data_structures.array.ArrayList;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Random;
+import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class SinglyLinkedListTest {
 
@@ -130,5 +139,25 @@ class SinglyLinkedListTest {
         boolean remove = list.remove("dummy5");
         assertThat(remove, equalTo(false));
         assertThat(list.size(), equalTo(4));
+    }
+
+    @ParameterizedTest
+    @MethodSource("listProvider")
+    void iterator(SinglyLinkedList<Integer> singlyLinkedList) {
+        Iterator<Integer> iterator = singlyLinkedList.iterator();
+        assertEquals(0, iterator.next());
+        assertEquals(1, iterator.next());
+        for (; iterator.hasNext(); ) {
+            assertNotNull(iterator.next());
+        }
+        assertThrows(NoSuchElementException.class, iterator::next);
+    }
+
+    static Stream<Arguments> listProvider() {
+        final SinglyLinkedList<Integer> instance = new SinglyLinkedList<>();
+        for (int i = 0; i < 10; i++) {
+            instance.insertAtEnd(i);
+        }
+        return Stream.of(arguments(instance));
     }
 }
