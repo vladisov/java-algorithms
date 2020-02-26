@@ -1,8 +1,10 @@
 package dev.algos.snatch.data_structures.linked_list;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<T> implements Iterable<T>{
     private ListNode<T> head;
     private int size;
 
@@ -116,6 +118,11 @@ public class SinglyLinkedList<T> {
     }
 
     @Override
+    public Iterator<T> iterator() {
+        return new SinglyListIterator();
+    }
+
+    @Override
     public String toString() {
         var sb = new StringBuilder();
         if (isEmpty()) {
@@ -131,5 +138,29 @@ public class SinglyLinkedList<T> {
         }
         return sb.append(temp.value.toString())
                 .toString();
+    }
+
+    private class SinglyListIterator implements Iterator<T> {
+
+        private ListNode<T> nextNode;
+
+        public SinglyListIterator() {
+            this.nextNode = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.nextNode != null;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            var item = nextNode.value;
+            nextNode = nextNode.next;
+            return item;
+        }
     }
 }
