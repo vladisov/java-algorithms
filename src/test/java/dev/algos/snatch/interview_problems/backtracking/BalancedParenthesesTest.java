@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.subsets;
+package dev.algos.snatch.interview_problems.backtracking;
 
 import org.junit.jupiter.api.Test;
 

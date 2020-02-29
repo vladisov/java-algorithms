@@ -1,13 +1,13 @@
-package dev.algos.snatch.interview_problems.subsets;
+package dev.algos.snatch.interview_problems.backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Given a collection of integers that might contain duplicates, nums, return all possible subsets (the power set).
+ * Given a collection of integers that might contain duplicates, nums, return all possible backtracking (the power set).
  * <p>
- * Note: The solution set must not contain duplicate subsets.
+ * Note: The solution set must not contain duplicate backtracking.
  * <p>
  * Example:
  * <p>
@@ -36,7 +36,7 @@ public class SubsetsWithDuplicates {
         int startIndex = 0, endIndex = 0;
         for (int i = 0; i < nums.length; i++) {
             startIndex = 0;
-            // if current and the previous elements are same, create new subsets only from the subsets
+            // if current and the previous elements are same, create new backtracking only from the backtracking
             // added in the previous step
             if (i > 0 && nums[i] == nums[i - 1])
                 startIndex = endIndex + 1;

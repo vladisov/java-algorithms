@@ -1,12 +1,12 @@
-package dev.algos.snatch.interview_problems.subsets;
+package dev.algos.snatch.interview_problems.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Given a set of distinct integers, nums, return all possible subsets (the power set).
+ * Given a set of distinct integers, nums, return all possible backtracking (the power set).
  * <p>
- * Note: The solution set must not contain duplicate subsets.
+ * Note: The solution set must not contain duplicate backtracking.
  * <p>
  * Example:
  * <p>
@@ -30,7 +30,7 @@ public class Subsets {
         // start by adding the empty subset
         subsets.add(new ArrayList<>());
         for (int currentNumber : nums) {
-            // we will take all existing subsets and insert the current number in them to create new subsets
+            // we will take all existing backtracking and insert the current number in them to create new backtracking
             int n = subsets.size();
             for (int i = 0; i < n; i++) {
                 // create a new subset from the existing subset and insert the current element to it

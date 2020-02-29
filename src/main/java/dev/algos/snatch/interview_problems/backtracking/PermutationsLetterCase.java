@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.subsets;
+package dev.algos.snatch.interview_problems.backtracking;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
