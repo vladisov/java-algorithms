@@ -2,6 +2,7 @@ package dev.algos.snatch.interview_problems.graph;
 
 import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList;
 import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList.GraphNode;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -10,9 +11,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 class TopologicalSortTest {
+    DirectedGraphAdjacencyList<Integer> graph;
+    TopologicalSort topologicalSort = new TopologicalSort();
 
-    @Test
-    void testTopologicalSortRecursive() {
+    @BeforeEach
+    void setUp() {
         GraphNode<Integer> n0 = new GraphNode<>(0);
         GraphNode<Integer> n1 = new GraphNode<>(1);
         GraphNode<Integer> n2 = new GraphNode<>(2);
@@ -26,11 +29,29 @@ class TopologicalSortTest {
         n3.setNeighbors(List.of(n1));
         n4.setNeighbors(List.of(n0, n1));
         n5.setNeighbors(List.of(n2, n4));
-        DirectedGraphAdjacencyList<Integer> graph = new DirectedGraphAdjacencyList<>(List.of(n0, n1, n2, n3, n4, n5));
+        graph = new DirectedGraphAdjacencyList<>(List.of(n0, n1, n2, n3, n4, n5));
+    }
 
-        TopologicalSort topologicalSort = new TopologicalSort();
+    @Test
+    void testTopologicalSortRecursive() {
         String result = topologicalSort.topologicalSortRecursive(graph);
+        assertThat(result, equalTo("[5, 4, 2, 3, 1, 0]"));
+    }
 
-        assertThat(result, equalTo("5 4 2 3 1 0"));
+    @Test
+    void testTopologicalSortKhan() {
+        String result = topologicalSort.topologicalSortKhan(graph);
+        assertThat(result, equalTo("[5, 2, 4, 3, 0, 1]"));
+    }
+
+    @Test
+    void testTopologicalSortAll() {
+        List<String> result = topologicalSort.allTopologicalSorts(graph);
+        assertThat(result.toString(),
+                equalTo(
+                        "[[5, 2, 3, 1, 4, 0], [5, 2, 3, 4, 0, 1], " +
+                                "[5, 2, 3, 4, 1, 0], [5, 2, 4, 0, 3, 1], [5, 2, 4, 3, 0, 1], " +
+                                "[5, 2, 4, 3, 1, 0], [5, 4, 0, 2, 3, 1], [5, 4, 2, 0, 3, 1], " +
+                                "[5, 4, 2, 3, 0, 1], [5, 4, 2, 3, 1, 0]]"));
     }
 }

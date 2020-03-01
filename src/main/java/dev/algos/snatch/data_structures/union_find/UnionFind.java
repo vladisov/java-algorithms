@@ -10,6 +10,7 @@ public class UnionFind {
         this.arr = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = i;
+            size[i] = i;
         }
     }
 
@@ -23,7 +24,29 @@ public class UnionFind {
         arr[i] = j;
     }
 
-    private int root(int i) {
+    void weightedUnion(int a, int b) {
+        int i = root(a);
+        int j = root(b);
+        if (size[i] < size[j]) {
+            arr[i] = arr[j];
+            size[j] += size[i];
+        } else {
+            arr[j] = arr[i];
+            size[i] += size[j];
+        }
+    }
+
+    int maxUnion() {
+        int max = 0;
+        int[] freq = new int[arr.length];
+        for (int i = 0; i < freq.length; i++) {
+            freq[arr[i]]++;
+            max = Math.max(max, freq[arr[i]]);
+        }
+        return max;
+    }
+
+    public int root(int i) {
         while (i != arr[i]) {
             arr[i] = arr[arr[i]];
             i = arr[i];
