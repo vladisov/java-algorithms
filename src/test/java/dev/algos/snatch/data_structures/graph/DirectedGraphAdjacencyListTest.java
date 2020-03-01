@@ -1,6 +1,6 @@
 package dev.algos.snatch.data_structures.graph;
 
-import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList.GraphNode;
+import dev.algos.snatch.data_structures.graph.util.GraphNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

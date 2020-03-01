@@ -1,5 +1,7 @@
 package dev.algos.snatch.data_structures.graph;
 
+import dev.algos.snatch.data_structures.graph.util.GraphNode;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +34,7 @@ public class DirectedGraphAdjacencyList<T> {
     boolean isConnected(T first, T second) {
         var firstNode = findNode(first);
         var secondNode = findNode(second);
-        return firstNode.neighbors.contains(secondNode);
+        return firstNode.getNeighbors().contains(secondNode);
     }
 
     String getPath(T first, T second) {
@@ -45,11 +47,11 @@ public class DirectedGraphAdjacencyList<T> {
         stack.add(firstNode);
         while (!stack.isEmpty()) {
             var node = stack.pop();
-            values.add(node.val);
+            values.add(node.getVal());
             boolean added = false;
-            for (var neighbor : node.neighbors) {
+            for (var neighbor : node.getNeighbors()) {
                 if (neighbor.equals(secondNode)) {
-                    values.add(neighbor.val);
+                    values.add(neighbor.getVal());
                     return values.toString();
                 }
                 if (!visited.contains(neighbor)) {
@@ -68,8 +70,8 @@ public class DirectedGraphAdjacencyList<T> {
     boolean addEdge(T first, T second) {
         var firstNode = findNode(first);
         var secondNode = findNode(second);
-        if (!firstNode.neighbors.contains(secondNode)) {
-            firstNode.neighbors.add(secondNode);
+        if (!firstNode.getNeighbors().contains(secondNode)) {
+            firstNode.getNeighbors().add(secondNode);
             return true;
         }
         return false;
@@ -81,36 +83,10 @@ public class DirectedGraphAdjacencyList<T> {
 
     private GraphNode<T> findNode(T value) {
         for (GraphNode<T> graphNode : graphNodes) {
-            if (graphNode.val == value) {
+            if (graphNode.getVal() == value) {
                 return graphNode;
             }
         }
         throw new NoSuchElementException(value.toString());
-    }
-
-    public static class GraphNode<T> {
-        T val;
-        List<GraphNode<T>> neighbors;
-
-        public GraphNode(T val) {
-            this.val = val;
-            neighbors = new ArrayList<>();
-        }
-
-        public T getVal() {
-            return val;
-        }
-
-        public void setVal(T val) {
-            this.val = val;
-        }
-
-        public List<GraphNode<T>> getNeighbors() {
-            return neighbors;
-        }
-
-        public void setNeighbors(List<GraphNode<T>> neighbors) {
-            this.neighbors = neighbors;
-        }
     }
 }

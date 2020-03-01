@@ -1,7 +1,8 @@
 package dev.algos.snatch.interview_problems.graph;
 
 import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList;
-import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList.GraphNode;
+import dev.algos.snatch.data_structures.graph.algorithms.TopologicalSort;
+import dev.algos.snatch.data_structures.graph.util.GraphNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
-package dev.algos.snatch.interview_problems.graph;
+package dev.algos.snatch.data_structures.graph.algorithms;
 
 import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList;
-import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList.GraphNode;
+import dev.algos.snatch.data_structures.graph.util.GraphNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
