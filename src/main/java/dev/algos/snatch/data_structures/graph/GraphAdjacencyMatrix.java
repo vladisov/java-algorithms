@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class GraphAdjacencyMatrix<T> implements Graph<T> {
+public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
     private int size;
-    private boolean[][] edges;
     private int[][] weights;
+    private boolean[][] edges;
     private GraphNode<T>[] vertices;
 
     public GraphAdjacencyMatrix(GraphNode<T>[] nodes) {
@@ -18,6 +18,13 @@ public class GraphAdjacencyMatrix<T> implements Graph<T> {
         this.edges = new boolean[size][size];
         this.weights = new int[size][size];
         this.vertices = nodes;
+    }
+
+    public GraphAdjacencyMatrix(int size) {
+        this.size = size;
+        this.edges = new boolean[size][size];
+        this.weights = new int[size][size];
+        this.vertices = new GraphNode[size];
     }
 
     @Override

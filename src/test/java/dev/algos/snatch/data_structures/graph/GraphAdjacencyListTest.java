@@ -8,11 +8,11 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-class DirectedGraphAdjacencyListTest {
+class GraphAdjacencyListTest {
 
     @Test
     void getPathTest() {
-        DirectedGraphAdjacencyList<Integer> graph = new DirectedGraphAdjacencyList<>();
+        GraphAdjacencyList<Integer> graph = new GraphAdjacencyList<>();
         GraphNode<Integer> n1 = new GraphNode<>(1);
         GraphNode<Integer> n2 = new GraphNode<>(2);
         GraphNode<Integer> n3 = new GraphNode<>(3);

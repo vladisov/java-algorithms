@@ -1,6 +1,6 @@
 package dev.algos.snatch.interview_problems.graph;
 
-import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList;
+import dev.algos.snatch.data_structures.graph.GraphAdjacencyList;
 import dev.algos.snatch.data_structures.graph.algorithms.TopologicalSort;
 import dev.algos.snatch.data_structures.graph.util.GraphNode;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 class TopologicalSortTest {
-    DirectedGraphAdjacencyList<Integer> graph;
+    GraphAdjacencyList<Integer> graph;
     TopologicalSort topologicalSort = new TopologicalSort();
 
     @BeforeEach
@@ -30,7 +30,7 @@ class TopologicalSortTest {
         n3.setNeighbors(List.of(n1));
         n4.setNeighbors(List.of(n0, n1));
         n5.setNeighbors(List.of(n2, n4));
-        graph = new DirectedGraphAdjacencyList<>(List.of(n0, n1, n2, n3, n4, n5));
+        graph = new GraphAdjacencyList<>(List.of(n0, n1, n2, n3, n4, n5));
     }
 
     @Test

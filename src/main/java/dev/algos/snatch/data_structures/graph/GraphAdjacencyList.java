@@ -19,15 +19,15 @@ import java.util.Stack;
  * 4
  * 5
  */
-public class DirectedGraphAdjacencyList<T> {
+public class GraphAdjacencyList<T> implements Graph<T> {
 
     List<GraphNode<T>> graphNodes;
 
-    public DirectedGraphAdjacencyList() {
+    public GraphAdjacencyList() {
         graphNodes = new ArrayList<>();
     }
 
-    public DirectedGraphAdjacencyList(List<GraphNode<T>> graphNodes) {
+    public GraphAdjacencyList(List<GraphNode<T>> graphNodes) {
         this.graphNodes = graphNodes;
     }
 
@@ -75,6 +75,39 @@ public class DirectedGraphAdjacencyList<T> {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void addEdge(GraphNode<T> a, GraphNode<T> b, boolean directed) {
+        if (!a.getNeighbors().contains(b)) {
+            a.getNeighbors().add(b);
+        }
+        if (!directed && !b.getNeighbors().contains(a)) {
+            b.getNeighbors().add(a);
+        }
+    }
+
+    @Override
+    public void removeEdge(GraphNode<T> a, GraphNode<T> b) {
+        a.getNeighbors().remove(b);
+        b.getNeighbors().remove(a);
+    }
+
+    @Override
+    public String getAllEdges() {
+        StringBuilder edges = new StringBuilder();
+        edges.append("[");
+        for (GraphNode<T> node : graphNodes) {
+            for (GraphNode<T> nei : node.getNeighbors()) {
+                edges.append("[" + node.getVal() + "," + nei.getVal() + "]");
+            }
+        }
+        return edges.append("]").toString();
+    }
+
+    @Override
+    public int size() {
+        return graphNodes.size();
     }
 
     public List<GraphNode<T>> getGraphNodes() {
