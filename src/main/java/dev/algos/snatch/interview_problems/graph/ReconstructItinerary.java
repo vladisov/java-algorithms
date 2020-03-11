@@ -27,7 +27,7 @@ import java.util.Queue;
  * But it is larger in lexical order.
  */
 public class ReconstructItinerary {
-
+    //TODO time and space
     public List<String> findItinerary(List<List<String>> tickets) {
         if (tickets == null || tickets.size() == 0) return List.of();
         Map<String, Queue<String>> map = new HashMap<>();
