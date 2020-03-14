@@ -13,6 +13,7 @@ import java.util.Set;
  * <p>
  * Input: 12
  * Output: false (12 is not a happy number)
+ * LeetCode: <a href="https://leetcode.com/problems/happy-number/submissions/">202. Happy Number</a>
  */
 public class HappyNumber {
 
@@ -36,7 +37,7 @@ public class HappyNumber {
     }
 
     /**
-     * Time complexity O(n)
+     * Time complexity O(logN)
      * Space complexity O(1)
      */
     boolean findWithoutSpace(int num) {

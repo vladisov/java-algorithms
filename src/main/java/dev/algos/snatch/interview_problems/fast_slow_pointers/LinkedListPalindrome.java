@@ -15,6 +15,8 @@ import dev.algos.snatch.data_structures.linked_list.ListNode;
  * <p>
  * Input: 2 -> 4 -> 6 -> 4 -> 2 -> 2 -> null
  * Output: false
+ *
+ * LeetCode: <a href="https://leetcode.com/problems/palindrome-linked-list/">234. Palindrome Linked List</a>
  */
 public class LinkedListPalindrome {
 

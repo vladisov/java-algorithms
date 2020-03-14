@@ -19,6 +19,8 @@ import dev.algos.snatch.data_structures.linked_list.ListNode;
  * <p>
  * Input: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> null
  * Output: 4
+ *
+ * LeetCode: <a href="https://leetcode.com/problems/middle-of-the-linked-list/">876. Middle of the Linked List</a>
  */
 public class MiddleOfLinkedList {
 

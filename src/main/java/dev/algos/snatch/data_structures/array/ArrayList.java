@@ -93,16 +93,11 @@ public class ArrayList<T> implements Iterable<T> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < size; i++) {
-            sb.append(elementData[i]);
-            if (i < size - 1) {
-                sb.append(",");
-            }
+        StringBuilder sb = new StringBuilder(size).append("[");
+        for (int i = 0; i < size - 1; i++) {
+            sb.append(elementData[i]).append(", ");
         }
-        return sb.append("]")
-                .toString();
+        return sb.append(elementData[size - 1]).append("]").toString();
     }
 
     @Override
