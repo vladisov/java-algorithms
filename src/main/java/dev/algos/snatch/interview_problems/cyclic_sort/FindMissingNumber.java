@@ -19,4 +19,16 @@ public class FindMissingNumber {
 
         return nums.length;
     }
+
+    public int findMissingNumberXor(int[] nums) {
+        int x1 = 0;
+        for (int i = 1; i <= nums.length; i++) {
+            x1 = x1 ^ i;
+        }
+        int x2 = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            x2 = x2 ^ nums[i];
+        }
+        return x1 ^ x2;
+    }
 }

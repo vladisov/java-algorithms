@@ -50,4 +50,20 @@ public class FindMinimumInRotatedSortedArray {
         }
         return nums[lo];
     }
+
+    public int findMinWithDuplicates(int[] nums) {
+        int lo = 0, hi = nums.length - 1;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (nums[lo] == nums[mid] && nums[hi] == nums[mid]) {
+                lo++;
+                hi--;
+            } else if (nums[mid] <= nums[hi]) {
+                hi = mid;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return nums[lo];
+    }
 }

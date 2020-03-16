@@ -26,7 +26,7 @@ public class SubsetsWithDuplicates {
 
     /**
      * Time complexity O(2^N)
-     * Space complexity O(2^2)
+     * Space complexity O(2^N)
      */
     public List<List<Integer>> subsetsWithDupEducative(int[] nums) {
         // sort the numbers to handle duplicates
