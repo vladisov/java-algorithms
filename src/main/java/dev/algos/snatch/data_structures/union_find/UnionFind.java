@@ -8,23 +8,33 @@ public class UnionFind {
 
     public UnionFind(int n) {
         this.arr = new int[n];
+        this.size = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = i;
-            size[i] = i;
+            size[i] = 1;
         }
     }
 
+    /**
+     * Time complexity O(logn)
+     */
     boolean connected(int a, int b) {
         return root(a) == root(b);
     }
 
-    void union(int a, int b) {
+    /**
+     * Time complexity O(logn)
+     */
+    public void union(int a, int b) {
         int i = root(a);
         int j = root(b);
         arr[i] = j;
     }
 
-    void weightedUnion(int a, int b) {
+    /**
+     * Time complexity O(logn)
+     */
+    public void weightedUnion(int a, int b) {
         int i = root(a);
         int j = root(b);
         if (size[i] < size[j]) {
@@ -36,6 +46,10 @@ public class UnionFind {
         }
     }
 
+    /**
+     * Time complexity O(N)
+     * returns deepest tree
+     */
     int maxUnion() {
         int max = 0;
         int[] freq = new int[arr.length];
@@ -46,6 +60,9 @@ public class UnionFind {
         return max;
     }
 
+    /**
+     * Time complexity O(logn)
+     */
     public int root(int i) {
         while (i != arr[i]) {
             arr[i] = arr[arr[i]];

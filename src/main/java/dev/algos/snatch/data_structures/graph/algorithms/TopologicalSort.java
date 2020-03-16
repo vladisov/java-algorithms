@@ -1,7 +1,7 @@
-package dev.algos.snatch.interview_problems.graph;
+package dev.algos.snatch.data_structures.graph.algorithms;
 
-import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList;
-import dev.algos.snatch.data_structures.graph.DirectedGraphAdjacencyList.GraphNode;
+import dev.algos.snatch.data_structures.graph.GraphAdjacencyList;
+import dev.algos.snatch.data_structures.graph.util.GraphNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +24,7 @@ public class TopologicalSort {
      * Time complexity O(V + E)
      * Space complexity O(V)
      */
-    public <T> String topologicalSortRecursive(DirectedGraphAdjacencyList<T> graph) {
+    public <T> String topologicalSortRecursive(GraphAdjacencyList<T> graph) {
         Set<GraphNode<T>> visited = new HashSet<>();
         Stack<T> values = new Stack<>();
         for (GraphNode<T> graphNode : graph.getGraphNodes()) {
@@ -48,7 +48,7 @@ public class TopologicalSort {
         values.add(node.getVal());
     }
 
-    public <T> String topologicalSortKhan(DirectedGraphAdjacencyList<T> graph) {
+    public <T> String topologicalSortKhan(GraphAdjacencyList<T> graph) {
         Queue<GraphNode<T>> queue = new LinkedList<>();
         Map<GraphNode<T>, Integer> indegrees = new HashMap<>();
         List<T> values = new ArrayList<>();
@@ -89,7 +89,7 @@ public class TopologicalSort {
     }
 
 
-    public <T> List<String> allTopologicalSorts(DirectedGraphAdjacencyList<T> graph) {
+    public <T> List<String> allTopologicalSorts(GraphAdjacencyList<T> graph) {
         List<String> result = new ArrayList<>();
         Map<GraphNode<T>, Integer> indegrees = new HashMap<>();
         Set<GraphNode<T>> visited = new HashSet<>();
@@ -105,7 +105,7 @@ public class TopologicalSort {
         return result;
     }
 
-    private <T> void allTopologicalSortsUtil(DirectedGraphAdjacencyList<T> graph, Set<GraphNode<T>> visited,
+    private <T> void allTopologicalSortsUtil(GraphAdjacencyList<T> graph, Set<GraphNode<T>> visited,
                                              Map<GraphNode<T>, Integer> indegrees, List<T> values, List<String> result) {
         int n = graph.getGraphNodes().size();
         // To indicate whether all topological are found or not
