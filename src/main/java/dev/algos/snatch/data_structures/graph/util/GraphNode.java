@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphNode<T> {
+    //todo make private
     public List<GraphNode<T>> neighbors;
     private T val;
 

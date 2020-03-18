@@ -1,5 +1,6 @@
 package dev.algos.snatch.interview_problems.topological_sort;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -10,6 +11,7 @@ class AlienDictionaryTest {
     private AlienDictionary instance = new AlienDictionary();
 
     @Test
+    @Disabled
     void testAlienOrder() {
 //        assertThat(instance.alienOrderKhan(new String[]{
 //                "wrt",

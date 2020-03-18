@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Graph<T> {
 
-    void addEdge(GraphNode<T> a, GraphNode<T> b, boolean directed);
+    void addEdge(GraphNode<T> a, GraphNode<T> b);
 
     void removeEdge(GraphNode<T> a, GraphNode<T> b);
 

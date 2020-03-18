@@ -2,7 +2,6 @@ package dev.algos.snatch.data_structures.graph;
 
 import dev.algos.snatch.data_structures.graph.util.GraphNode;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -21,14 +20,21 @@ import java.util.Stack;
  */
 public class GraphAdjacencyList<T> implements Graph<T> {
 
-    List<GraphNode<T>> graphNodes;
+    private final List<GraphNode<T>> graphNodes;
+    private final boolean directed;
 
-    public GraphAdjacencyList() {
-        graphNodes = new ArrayList<>();
+//    public GraphAdjacencyList() {
+//        graphNodes = new ArrayList<>();
+//    }
+
+    public GraphAdjacencyList(List<GraphNode<T>> graphNodes, boolean directed) {
+        this.graphNodes = graphNodes;
+        this.directed = directed;
     }
 
     public GraphAdjacencyList(List<GraphNode<T>> graphNodes) {
         this.graphNodes = graphNodes;
+        this.directed = false;
     }
 
     boolean isConnected(T first, T second) {
@@ -67,18 +73,8 @@ public class GraphAdjacencyList<T> implements Graph<T> {
         return "[]";
     }
 
-    boolean addEdge(T first, T second) {
-        var firstNode = findNode(first);
-        var secondNode = findNode(second);
-        if (!firstNode.getNeighbors().contains(secondNode)) {
-            firstNode.getNeighbors().add(secondNode);
-            return true;
-        }
-        return false;
-    }
-
     @Override
-    public void addEdge(GraphNode<T> a, GraphNode<T> b, boolean directed) {
+    public void addEdge(GraphNode<T> a, GraphNode<T> b) {
         if (!a.getNeighbors().contains(b)) {
             a.getNeighbors().add(b);
         }

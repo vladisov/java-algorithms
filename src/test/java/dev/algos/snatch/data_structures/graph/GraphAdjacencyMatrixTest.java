@@ -22,8 +22,8 @@ class GraphAdjacencyMatrixTest {
 
         assertThat(graph.getAllEdges(), equalTo("[]"));
 
-        graph.addEdge(n1, n4, false);
-        graph.addEdge(n1, n3, false);
+        graph.addEdge(n1, n4);
+        graph.addEdge(n1, n3);
 
         assertThat(graph.getAllEdges(), equalTo("[[1, 3], [1, 4], [3, 1], [4, 1]]"));
 

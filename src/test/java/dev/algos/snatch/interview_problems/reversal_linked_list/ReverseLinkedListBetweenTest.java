@@ -2,11 +2,13 @@ package dev.algos.snatch.interview_problems.reversal_linked_list;
 
 import dev.algos.snatch.data_structures.linked_list.ListNode;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+@Disabled
 class ReverseLinkedListBetweenTest {
 
     private ReverseLinkedListBetween instance;

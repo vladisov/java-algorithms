@@ -97,7 +97,10 @@ public class ArrayList<T> implements Iterable<T> {
         for (int i = 0; i < size - 1; i++) {
             sb.append(elementData[i]).append(", ");
         }
-        return sb.append(elementData[size - 1]).append("]").toString();
+        if (size != 0) {
+            sb.append(elementData[size - 1]);
+        }
+        return sb.append("]").toString();
     }
 
     @Override

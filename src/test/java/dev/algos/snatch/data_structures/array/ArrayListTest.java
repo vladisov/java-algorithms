@@ -87,7 +87,7 @@ class ArrayListTest {
         list.add(1)
                 .add(2)
                 .add(3);
-        assertThat(list.toString(), equalTo("[1,2,3]"));
+        assertThat(list.toString(), equalTo("[1, 2, 3]"));
     }
 
     @Test

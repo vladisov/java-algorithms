@@ -12,12 +12,22 @@ public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
     private int[][] weights;
     private boolean[][] edges;
     private GraphNode<T>[] vertices;
+    private boolean directed;
+
+    public GraphAdjacencyMatrix(GraphNode<T>[] nodes, boolean directed) {
+        this.size = nodes.length;
+        this.edges = new boolean[size][size];
+        this.weights = new int[size][size];
+        this.vertices = nodes;
+        this.directed = directed;
+    }
 
     public GraphAdjacencyMatrix(GraphNode<T>[] nodes) {
         this.size = nodes.length;
         this.edges = new boolean[size][size];
         this.weights = new int[size][size];
         this.vertices = nodes;
+        this.directed = false;
     }
 
     public GraphAdjacencyMatrix(int size) {
@@ -28,7 +38,7 @@ public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
     }
 
     @Override
-    public void addEdge(GraphNode<T> a, GraphNode<T> b, boolean directed) {
+    public void addEdge(GraphNode<T> a, GraphNode<T> b) {
         int i = findNodeIndex(a);
         int j = findNodeIndex(b);
 
@@ -38,7 +48,7 @@ public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
         }
     }
 
-    public void addEdge(GraphNode<T> a, GraphNode<T> b, boolean directed, int weight) {
+    public void addEdge(GraphNode<T> a, GraphNode<T> b, int weight) {
         int i = findNodeIndex(a);
         int j = findNodeIndex(b);
 

@@ -16,6 +16,6 @@ class PathToMaxSumTest {
     @Test
     void testPathMaxSum() {
         TreeNode node = TreeNode.parseFromLevelOrder("[-10,9,20,null,null,15,7]");
-        assertThat(instance.maxPathSum(node), equalTo(node));
+        assertThat(instance.maxPathSum(node), equalTo(42));
     }
 }

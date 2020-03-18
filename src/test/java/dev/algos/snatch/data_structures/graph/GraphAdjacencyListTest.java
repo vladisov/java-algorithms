@@ -12,7 +12,6 @@ class GraphAdjacencyListTest {
 
     @Test
     void getPathTest() {
-        GraphAdjacencyList<Integer> graph = new GraphAdjacencyList<>();
         GraphNode<Integer> n1 = new GraphNode<>(1);
         GraphNode<Integer> n2 = new GraphNode<>(2);
         GraphNode<Integer> n3 = new GraphNode<>(3);
@@ -25,7 +24,7 @@ class GraphAdjacencyListTest {
         n4.neighbors = List.of(n2, n3, n5);
         n5.neighbors = List.of(n1, n3, n4);
 
-        graph.graphNodes.addAll(List.of(n1, n2, n3, n4, n5));
+        GraphAdjacencyList<Integer> graph = new GraphAdjacencyList<>(List.of(n1, n2, n3, n4, n5));
 
         String path = graph.getPath(1, 5);
         assertThat(path, equalTo("[1, 5]"));

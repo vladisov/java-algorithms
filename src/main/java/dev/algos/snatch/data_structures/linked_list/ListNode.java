@@ -10,6 +10,7 @@ public class ListNode<T> {
 
     @Override
     public String toString() {
+        //TODO fix
         StringBuilder sb = new StringBuilder();
         sb.append(value);
         var nextNode = this.next;
