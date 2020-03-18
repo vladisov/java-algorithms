@@ -13,6 +13,10 @@ import java.util.Set;
 
 public class Dijkstra {
 
+    /**
+     * Time complexity O(ElogV)
+     * Space complexity O(V)
+     */
     public <T> String findShortestPath(WeightedGraphAdjacencyList<T> graph, GraphNode<T> root) {
         Set<GraphNode<T>> visited = new HashSet<>();
         Map<GraphNode<T>, Integer> weights = new LinkedHashMap<>(); //weights so far
@@ -47,6 +51,10 @@ public class Dijkstra {
     }
 
 
+    /**
+     * Time complexity O(V^2)
+     * Space complexity O(V)
+     */
     public <T> String findShortestPath(GraphAdjacencyMatrix<T> graph, GraphNode<T> root) {
         Set<GraphNode<T>> visited = new HashSet<>();
         Map<GraphNode<T>, Integer> weights = new LinkedHashMap<>(); //weights so far
