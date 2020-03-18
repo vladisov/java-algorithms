@@ -70,6 +70,16 @@ public class WeightedGraphAdjacencyList<T> implements WeightedGraph<T> {
         }
     }
 
+    public List<Edge<T>> getEdges(GraphNode<T> src) {
+        List<Edge<T>> nodeEdges = new ArrayList<>();
+        for (Edge<T> edge : edges) {
+            if (edge.getSrc().equals(src)) {
+                nodeEdges.add(edge);
+            }
+        }
+        return nodeEdges;
+    }
+
     @Override
     public String getAllEdges() {
         return this.edges.toString();
@@ -84,7 +94,7 @@ public class WeightedGraphAdjacencyList<T> implements WeightedGraph<T> {
         return graphNodes;
     }
 
-    static class Edge<T> {
+    public static class Edge<T> {
         private int weight;
         private GraphNode<T> src;
         private GraphNode<T> dest;
