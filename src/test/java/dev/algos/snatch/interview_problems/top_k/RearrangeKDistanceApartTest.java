@@ -5,12 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-class TaskSchedulerTest {
+class RearrangeKDistanceApartTest {
 
     @Test
     void test() {
-        TaskScheduler taskScheduler = new TaskScheduler();
-
-        assertThat(taskScheduler.leastInterval(new char[]{'A', 'A', 'A', 'B', 'B', 'B'}, 2), equalTo(8));
+        RearrangeKDistanceApart distanceApart = new RearrangeKDistanceApart();
+        assertThat(distanceApart.rearrangeString("aaaaaaaadbbdcdcc", 2), equalTo("adacadacabacabda"));
     }
 }

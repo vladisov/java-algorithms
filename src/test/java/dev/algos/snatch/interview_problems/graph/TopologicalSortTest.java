@@ -55,4 +55,13 @@ class TopologicalSortTest {
                                 "[5, 2, 4, 3, 1, 0], [5, 4, 0, 2, 3, 1], [5, 4, 2, 0, 3, 1], " +
                                 "[5, 4, 2, 3, 0, 1], [5, 4, 2, 3, 1, 0]]"));
     }
+
+    @Test
+    void testTopologicalSortEducative() {
+        assertThat(topologicalSort.sortKhanFromEducative(4,
+                new int[][]{new int[]{3, 2}, new int[]{3, 0}, new int[]{2, 0}, new int[]{2, 1}}), equalTo(List.of(3, 2, 0, 1)));
+
+        assertThat(topologicalSort.sortKhanFromEducative(5, new int[][]{new int[]{4, 2}, new int[]{4, 3}, new int[]{2, 0},
+                new int[]{2, 1}, new int[]{3, 1}}), equalTo(List.of(4, 2, 3, 0, 1)));
+    }
 }

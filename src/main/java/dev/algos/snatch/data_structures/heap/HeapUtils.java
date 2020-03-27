@@ -38,10 +38,6 @@ public class HeapUtils {
         }
     }
 
-    public void buildMaxHeap(int[] arr) {
-        buildHeap(arr, true);
-    }
-
     /**
      * Time complexity O(n)
      */
@@ -55,8 +51,8 @@ public class HeapUtils {
         }
     }
 
-    public void buildMinHeap(int[] arr) {
-        buildHeap(arr, false);
+    public void buildMaxHeap(int[] arr) {
+        buildHeap(arr, true);
     }
 
     public void heapSort(int[] arr) {
@@ -68,5 +64,9 @@ public class HeapUtils {
             arr[i] = tmp;
             maxHeapify(arr, i, 0);
         }
+    }
+
+    public void buildMinHeap(int[] arr) {
+        buildHeap(arr, false);
     }
 }

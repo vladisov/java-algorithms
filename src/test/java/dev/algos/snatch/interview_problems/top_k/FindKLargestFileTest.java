@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.heap;
+package dev.algos.snatch.interview_problems.top_k;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
