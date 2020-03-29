@@ -71,7 +71,7 @@ public class KthSmallestNumber {
     /*
     The above algorithm has the same worst and average case time complexities as mentioned for the previous algorithm.
     But choosing the pivot randomly has the effect of rendering the worst-case very unlikely, particularly for large arrays.
-    Therefore, the expected time complexity of the above algorithm will be O(N)O(N), but the absolute worst case is still O(N^2)
+    Therefore, the expected time complexity of the above algorithm will be O(N), but the absolute worst case is still O(N^2)
 ​​    Practically, this algorithm is a lot faster than the non-randomized version.
      */
     private int partition(int[] arr, int lo, int hi) {

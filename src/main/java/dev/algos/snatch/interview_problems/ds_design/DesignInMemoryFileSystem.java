@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.miscellaneous;
+package dev.algos.snatch.interview_problems.ds_design;
 
 /**
  * Design an in-memory file system to simulate the following functions:

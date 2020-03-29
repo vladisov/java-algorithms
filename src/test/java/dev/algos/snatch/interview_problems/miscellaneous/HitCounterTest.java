@@ -1,5 +1,9 @@
 package dev.algos.snatch.interview_problems.miscellaneous;
 
+import dev.algos.snatch.interview_problems.ds_design.HitCounter;
+import dev.algos.snatch.interview_problems.ds_design.HitCounterMap;
+import dev.algos.snatch.interview_problems.ds_design.HitCounterQueue;
+import dev.algos.snatch.interview_problems.ds_design.HitCounterSet;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

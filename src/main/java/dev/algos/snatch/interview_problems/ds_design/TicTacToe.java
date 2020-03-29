@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.miscellaneous;
+package dev.algos.snatch.interview_problems.ds_design;
 
 public class TicTacToe {
     private int[] rows;
