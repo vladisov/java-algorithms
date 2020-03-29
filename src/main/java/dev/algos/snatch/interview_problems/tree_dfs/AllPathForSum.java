@@ -40,6 +40,7 @@ public class AllPathForSum {
         if (root == null) return new ArrayList<>();
         List<List<Integer>> result = new ArrayList<>();
         Stack<Integer> values = new Stack<>();
+        values.add(root.val);
         pathSumHelper(root.left, sum - root.val, values, result);
         pathSumHelper(root.right, sum - root.val, values, result);
         return result;

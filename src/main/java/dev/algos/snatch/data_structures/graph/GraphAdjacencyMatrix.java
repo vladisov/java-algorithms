@@ -4,7 +4,9 @@ package dev.algos.snatch.data_structures.graph;
 import dev.algos.snatch.data_structures.graph.util.GraphNode;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
@@ -30,13 +32,6 @@ public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
         this.directed = false;
     }
 
-    public GraphAdjacencyMatrix(int size) {
-        this.size = size;
-        this.edges = new boolean[size][size];
-        this.weights = new int[size][size];
-        this.vertices = new GraphNode[size];
-    }
-
     @Override
     public void addEdge(GraphNode<T> a, GraphNode<T> b) {
         int i = findNodeIndex(a);
@@ -58,6 +53,18 @@ public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
             edges[j][i] = true;
             weights[j][i] = weight;
         }
+    }
+
+
+    public Map<GraphNode<T>, Integer> getNeighbors(GraphNode<T> node) {
+        int index = findNodeIndex(node);
+        Map<GraphNode<T>, Integer> result = new LinkedHashMap<>();
+        for (int i = 0; i < size; i++) {
+            if (i != index && edges[index][i]) {
+                result.put(vertices[i], weights[index][i]);
+            }
+        }
+        return result;
     }
 
     @Override

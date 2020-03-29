@@ -132,4 +132,41 @@ public class TopologicalSort {
             result.add(values.toString());
         }
     }
+
+    public List<Integer> sortKhanFromEducative(int vertices, int[][] edges) {
+        List<Integer> sortedOrder = new ArrayList<>();
+        Map<Integer, Integer> indegrees = new HashMap<>();
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        for (int i = 0; i < vertices; i++) {
+            graph.putIfAbsent(i, new ArrayList<>());
+            indegrees.put(i, 0);
+        }
+        for (int[] edge : edges) {
+            indegrees.put(edge[1], indegrees.get(edge[1]) + 1);
+            graph.get(edge[0]).add(edge[1]);
+        }
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < vertices; i++) {
+            if (indegrees.get(i) == 0) {
+                queue.add(i);
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            Integer node = queue.poll();
+            sortedOrder.add(node);
+            for (int neighbor : graph.get(node)) {
+                indegrees.put(neighbor, indegrees.get(neighbor) - 1);
+                if (indegrees.get(neighbor) == 0) {
+                    queue.add(neighbor);
+                }
+            }
+        }
+
+        if (sortedOrder.size() != vertices) {
+            throw new RuntimeException("Only DAG!");
+        }
+
+        return sortedOrder;
+    }
 }

@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.heap;
+package dev.algos.snatch.interview_problems.k_way_merge;
 
 import dev.algos.snatch.data_structures.linked_list.ListNode;
 

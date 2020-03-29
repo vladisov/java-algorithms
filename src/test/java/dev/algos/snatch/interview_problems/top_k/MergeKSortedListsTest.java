@@ -1,6 +1,7 @@
-package dev.algos.snatch.interview_problems.heap;
+package dev.algos.snatch.interview_problems.top_k;
 
 import dev.algos.snatch.data_structures.linked_list.ListNode;
+import dev.algos.snatch.interview_problems.k_way_merge.MergeKSortedLists;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
