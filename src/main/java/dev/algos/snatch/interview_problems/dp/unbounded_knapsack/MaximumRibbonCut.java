@@ -29,6 +29,10 @@ import java.util.Arrays;
  */
 public class MaximumRibbonCut {
 
+    /**
+     * Time O(L * N)
+     * Space O(N)
+     */
     int maxRibbonCutBUOptimized(int[] lengths, int n) {
         int[] dp = new int[n + 1];
         dp[0] = 0;
