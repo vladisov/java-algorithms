@@ -108,3 +108,4 @@ public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
         return List.of(vertices);
     }
 }
+
