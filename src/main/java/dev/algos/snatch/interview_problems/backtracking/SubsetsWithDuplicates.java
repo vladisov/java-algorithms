@@ -38,8 +38,9 @@ public class SubsetsWithDuplicates {
             startIndex = 0;
             // if current and the previous elements are same, create new backtracking only from the backtracking
             // added in the previous step
-            if (i > 0 && nums[i] == nums[i - 1])
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 startIndex = endIndex + 1;
+            }
             endIndex = subsets.size() - 1;
             for (int j = startIndex; j <= endIndex; j++) {
                 // create a new subset from the existing subset and add the current element to it

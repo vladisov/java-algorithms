@@ -17,6 +17,7 @@ public class PalindromicPartitioning2 {
      * Time O(N^2)
      * Space O(N^2)
      */
+
     public int minCutBU(String s) {
         if (s == null || s.length() == 0) return 0;
         int n = s.length();

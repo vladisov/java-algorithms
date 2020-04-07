@@ -27,29 +27,28 @@ public class MinimumDeletionsStringToMakeItPalindrome {
      * Space O(N^2)
      */
     int minDeletions2(String str) {
-        return str.length() - findLPSLengthBU(str);
+        return str.length() - findLPSLength(str);
     }
 
-    public int findLPSLengthBU(String str) {
-        if (str == null || str.length() == 0) return 0;
-        int n = str.length();
-        boolean[][] dp = new boolean[n][n];
-        for (int i = 0; i < n; i++) {
-            dp[i][i] = true;
-        }
+    public int findLPSLength(String st) {
+        // dp[i][j] stores the length of LPS from index 'i' to index 'j'
+        int[][] dp = new int[st.length()][st.length()];
 
-        int maxLen = 1;
-        for (int start = n - 1; start >= 0; start--) { // start from last index
-            for (int end = start + 1; end < n; end++) { // add one element in time
-                if (str.charAt(start) == str.charAt(end)) {
-                    int remainingLen = end - start - 1;
-                    if (remainingLen == 0 || dp[start + 1][end - 1]) { // start + 1 end - 1 -> nested substring
-                        maxLen = Math.max(maxLen, end - start + 1);
-                    }
+        // every sequence with one element is a palindrome of length 1
+        for (int i = 0; i < st.length(); i++)
+            dp[i][i] = 1;
+
+        for (int startIndex = st.length() - 1; startIndex >= 0; startIndex--) {
+            for (int endIndex = startIndex + 1; endIndex < st.length(); endIndex++) {
+                // case 1: elements at the beginning and the end are the same
+                if (st.charAt(startIndex) == st.charAt(endIndex)) {
+                    dp[startIndex][endIndex] = 2 + dp[startIndex + 1][endIndex - 1];
+                } else { // case 2: skip one element either from the beginning or the end
+                    dp[startIndex][endIndex] = Math.max(dp[startIndex + 1][endIndex], dp[startIndex][endIndex - 1]);
                 }
             }
         }
-        return maxLen;
+        return dp[0][st.length() - 1];
     }
 
 
