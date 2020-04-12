@@ -33,6 +33,9 @@ import java.util.PriorityQueue;
  * Meetings: [[4,5], [2,3], [2,4], [3,5]]
  * Output: 2
  * Explanation: We will need one room for [2,3] and [3,5], and another room for [2,4] and [4,5].
+ *
+ * LeetCode: <a href="https://leetcode.com/problems/meeting-rooms-ii/">253. Meeting Rooms II</a>
+ *
  */
 public class MinimumMeetingRooms {
 

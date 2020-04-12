@@ -23,6 +23,8 @@ import java.util.List;
  * Intervals: [[1,4], [2,6], [3,5]]
  * Output: [[1,6]]
  * Explanation: Since all the given intervals overlap, we merged them into one.
+ * <p>
+ * LeetCode: <a href="https://leetcode.com/problems/merge-intervals/">56. Merge Intervals</a>
  */
 public class MergeIntervals {
 

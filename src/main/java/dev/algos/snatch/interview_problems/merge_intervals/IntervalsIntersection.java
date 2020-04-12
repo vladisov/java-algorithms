@@ -19,6 +19,8 @@ import java.util.List;
  * Input: arr1=[[1, 3], [5, 7], [9, 12]], arr2=[[5, 10]]
  * Output: [5, 7], [9, 10]
  * Explanation: The output list contains the common intervals between the two lists.
+ * <p>
+ * LeetCode: <a href="https://leetcode.com/problems/interval-list-intersections/">986. Interval List Intersections</a>
  */
 public class IntervalsIntersection {
 
