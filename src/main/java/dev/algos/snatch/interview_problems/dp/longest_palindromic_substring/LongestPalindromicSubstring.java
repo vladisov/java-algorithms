@@ -67,7 +67,6 @@ public class LongestPalindromicSubstring {
             return palindrome;
         }
 
-//        longestPalindromeRec(s, start + 1, end - 1, sub);
         String sub1 = longestPalindromeRec(s, start + 1, end, sub, dp);
         String sub2 = longestPalindromeRec(s, start, end - 1, sub, dp);
         sub = sub1.length() > sub2.length() ? sub1 : sub2;
