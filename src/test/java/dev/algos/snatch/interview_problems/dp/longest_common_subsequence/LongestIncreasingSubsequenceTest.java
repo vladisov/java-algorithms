@@ -10,5 +10,7 @@ class LongestIncreasingSubsequenceTest {
     void test() {
         LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
         assertEquals(4, lis.lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
+        assertEquals(4, lis.lengthOfLISLenBU(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
+        assertEquals(4, lis.lengthOfLISLenBUMy(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
     }
 }

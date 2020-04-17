@@ -20,7 +20,6 @@ public class LongestIncreasingSubsequence {
 
     public int lengthOfLISOptimized(int[] nums) {
         int[] arr = new int[nums.length];
-        ;
         for (int i = 0; i < nums.length; i++) {
             for (int j = i - 1; j >= 0; j--) {
                 if (nums[j] < nums[i]) {
@@ -44,6 +43,21 @@ public class LongestIncreasingSubsequence {
             for (int j = 0; j < i; j++) {
                 if (nums[i] > nums[j] && dp[i] <= dp[j]) { // if there are no other bigger increasing subsequence from dp[j]
                     dp[i] = 1 + dp[j];
+                }
+                max = Math.max(max, dp[i]);
+            }
+        }
+        return max;
+    }
+
+    public int lengthOfLISLenBUMy(int[] nums) {
+        int[] dp = new int[nums.length];
+        Arrays.fill(dp, 1);
+        int max = 1;
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(1 + dp[j], dp[i]);
                 }
                 max = Math.max(max, dp[i]);
             }
