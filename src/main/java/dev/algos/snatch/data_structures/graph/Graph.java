@@ -10,7 +10,9 @@ public interface Graph<T> {
 
     void removeEdge(GraphNode<T> a, GraphNode<T> b);
 
-    String getAllEdges();
+    List<WeightedGraphAdjacencyList.Edge<T>> getAllEdges();
+
+    String edgesToString();
 
     int size();
 

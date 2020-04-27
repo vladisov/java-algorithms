@@ -1,17 +1,21 @@
-package dev.algos.snatch.data_structures.graph;
+package dev.algos.snatch.data_structures.graph.algorithms;
 
+import dev.algos.snatch.data_structures.graph.WeightedGraph;
+import dev.algos.snatch.data_structures.graph.WeightedGraphAdjacencyList;
+import dev.algos.snatch.data_structures.graph.WeightedGraphAdjacencyList.Edge;
 import dev.algos.snatch.data_structures.graph.util.GraphNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class WeightedGraphAdjacencyListTest {
+class MinimumSpanningTreeTest {
 
     @Test
-    void baseTest() {
+    void test() {
+        MinimumSpanningTree mst = new MinimumSpanningTree();
+
         GraphNode<Integer> n0 = new GraphNode<>(0);
         GraphNode<Integer> n1 = new GraphNode<>(1);
         GraphNode<Integer> n2 = new GraphNode<>(2);
@@ -28,6 +32,7 @@ class WeightedGraphAdjacencyListTest {
         graph.addEdge(n5, n2, 4);
         graph.addEdge(n5, n4, 25);
 
-        assertThat(graph.edgesToString(), equalTo("[[2, 3, 10], [3, 1, 5], [4, 0, 17], [4, 1, 12], [5, 2, 4], [5, 4, 25]]"));
+        List<Edge<Integer>> spanningTree = mst.findKruskalsMinimumSpanningTree(graph);
+        assertEquals("[[5, 2, 4], [3, 1, 5], [2, 3, 10], [4, 1, 12], [4, 0, 17]]", spanningTree.toString());
     }
 }

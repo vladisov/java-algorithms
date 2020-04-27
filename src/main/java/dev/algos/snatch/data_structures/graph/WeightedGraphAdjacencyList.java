@@ -81,7 +81,12 @@ public class WeightedGraphAdjacencyList<T> implements WeightedGraph<T> {
     }
 
     @Override
-    public String getAllEdges() {
+    public List<Edge<T>> getAllEdges() {
+        return this.edges;
+    }
+
+    @Override
+    public String edgesToString() {
         return this.edges.toString();
     }
 
