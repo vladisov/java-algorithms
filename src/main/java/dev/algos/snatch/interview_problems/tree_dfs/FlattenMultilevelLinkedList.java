@@ -1,7 +1,5 @@
 package dev.algos.snatch.interview_problems.tree_dfs;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
 
 /**
@@ -24,28 +22,24 @@ public class FlattenMultilevelLinkedList {
      * Space O(N)
      */
     public Node flatten(Node head) {
-        if (head == null) return head;
-        Set<Node> visited = new HashSet<>();
+        if (head == null) return null;
         Stack<Node> stack = new Stack<>();
-
-        Node prev = null;
         stack.add(head);
-
+        Node prev = null;
         while (!stack.isEmpty()) {
-            Node node = stack.pop();
-            visited.add(node);
+            Node curr = stack.pop();
             if (prev != null) {
-                prev.next = node;
-                node.prev = prev;
+                prev.next = curr;
+                curr.prev = prev;
             }
-            if (node.next != null && !visited.contains(node.next)) {
-                stack.add(node.next);
+            if (curr.next != null) {
+                stack.add(curr.next);
             }
-            if (node.child != null && !visited.contains(node.child)) {
-                stack.add(node.child);
+            if (curr.child != null) {
+                stack.add(curr.child);
             }
-            node.child = null;
-            prev = node;
+            curr.child = null;
+            prev = curr;
         }
         return head;
     }

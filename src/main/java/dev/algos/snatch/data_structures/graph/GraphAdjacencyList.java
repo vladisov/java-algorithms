@@ -90,7 +90,12 @@ public class GraphAdjacencyList<T> implements Graph<T> {
     }
 
     @Override
-    public String getAllEdges() {
+    public List<WeightedGraphAdjacencyList.Edge<T>> getAllEdges() {
+        return List.of(); //TODO
+    }
+
+    @Override
+    public String edgesToString() {
         StringBuilder edges = new StringBuilder();
         edges.append("[");
         for (GraphNode<T> node : graphNodes) {
@@ -118,4 +123,5 @@ public class GraphAdjacencyList<T> implements Graph<T> {
         }
         throw new NoSuchElementException(value.toString());
     }
+
 }

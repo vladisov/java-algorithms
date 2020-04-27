@@ -78,7 +78,20 @@ public class GraphAdjacencyMatrix<T> implements WeightedGraph<T> {
         weights[j][i] = 0;
     }
 
-    public String getAllEdges() {
+    public List<WeightedGraphAdjacencyList.Edge<T>> getAllEdges() {
+        List<WeightedGraphAdjacencyList.Edge<T>> edgeList = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (edges[i][j]) {
+                    edgeList.add(new WeightedGraphAdjacencyList.Edge<T>(weights[i][j], vertices[i], vertices[j]));
+                }
+            }
+        }
+        return edgeList;
+    }
+
+    @Override
+    public String edgesToString() {
         List<List<String>> edgeList = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {

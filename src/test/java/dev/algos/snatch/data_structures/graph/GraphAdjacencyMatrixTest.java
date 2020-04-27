@@ -20,12 +20,12 @@ class GraphAdjacencyMatrixTest {
 
         graph = new GraphAdjacencyMatrix<>(new GraphNode[]{n0, n1, n2, n3, n4});
 
-        assertThat(graph.getAllEdges(), equalTo("[]"));
+        assertThat(graph.edgesToString(), equalTo("[]"));
 
         graph.addEdge(n1, n4);
         graph.addEdge(n1, n3);
 
-        assertThat(graph.getAllEdges(), equalTo("[[1, 3], [1, 4], [3, 1], [4, 1]]"));
+        assertThat(graph.edgesToString(), equalTo("[[1, 3], [1, 4], [3, 1], [4, 1]]"));
 
     }
 }
