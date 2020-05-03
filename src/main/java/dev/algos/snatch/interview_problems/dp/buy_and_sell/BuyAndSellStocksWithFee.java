@@ -21,8 +21,8 @@ public class BuyAndSellStocksWithFee {
 
     public int maxProfit(int[] prices, int fee) {
         int days = prices.length;
-        int[] buy = new int[days]; // state if we in buy mode, means we can buy and we have right to sell
-        int[] sell = new int[days]; // state if we in sell mode, we can sell and we have right to buy
+        int[] buy = new int[days]; // state if we in buy mode, means we can buy and we have right to sell on next day
+        int[] sell = new int[days]; // state if we in sell mode, we can sell and we have right to buy on next day
         buy[0] = -prices[0]; // we buy a stock on day 0
         for (int i = 1; i < days; i++) {
             // we can do nothing OR we have right to buy here and we buy from sell[i - 1]

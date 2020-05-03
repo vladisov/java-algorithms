@@ -38,6 +38,7 @@ public class MedianOfTwoSortedArrays {
         int high = x;
         while (low <= high) {
             int partitionX = (low + high) / 2;
+            // half of all numbers - partition X, cause we want sum of numbers in partitions to be half of all numbers
             int partitionY = (x + y + 1) / 2 - partitionX;
 
             //if partitionX is 0 it means nothing is there on left side. Use -INF for maxLeftX

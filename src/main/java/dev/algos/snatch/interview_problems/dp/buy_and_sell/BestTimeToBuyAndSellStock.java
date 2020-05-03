@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.dp.buy_and_sell;
 
 /**
  * ### [121.Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
@@ -45,5 +45,24 @@ public class BestTimeToBuyAndSellStock {
             buy = Math.min(prices[i], buy);
         }
         return globalMax;
+    }
+
+    /**
+     * Time complexity
+     * O(n)
+     * Space complexity
+     * O(n)
+     */
+    public int maxProfitDP(int[] prices) {
+        if (prices.length == 0) return 0;
+        int days = prices.length;
+        int[] buy = new int[days];
+        int[] sell = new int[days];
+        buy[0] = -prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            buy[i] = Math.max(buy[i - 1], -prices[i]);
+            sell[i] = Math.max(sell[i - 1], buy[i - 1] + prices[i]);
+        }
+        return sell[days - 1];
     }
 }
