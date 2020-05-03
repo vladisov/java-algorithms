@@ -2,6 +2,7 @@ package dev.algos.snatch.api.service;
 
 import dev.algos.snatch.api.dto.FileDto;
 import dev.algos.snatch.api.dto.PathItemDto;
+import dev.algos.snatch.api.exception.PathNotFound;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -19,8 +20,6 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
-
-import static dev.algos.snatch.api.util.ArgumentCheck.checkArg;
 
 @Slf4j
 @Singleton
@@ -68,7 +67,9 @@ public class FileStorageImpl implements FileStorage {
     @Override
     public List<PathItemDto> getFiles(@NonNull String path) {
         path = "/" + path;
-        checkArg(paths.containsKey(path), "No path found for path " + path);
+        if (!paths.containsKey(path)) {
+            throw new PathNotFound("No path found for " + path);
+        }
 
         var paths = this.paths.get(path);
         var dtos = new ArrayList<PathItemDto>();
