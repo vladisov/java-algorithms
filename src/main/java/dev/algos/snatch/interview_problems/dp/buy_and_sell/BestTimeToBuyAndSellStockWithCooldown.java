@@ -39,7 +39,7 @@ public class BestTimeToBuyAndSellStockWithCooldown {
         if (prices.length == 0) return 0;
         int days = prices.length;
         int b0 = -prices[0], b1 = b0;
-        int r0 = 0, r1 = 0, s0 = 0, s1 = 0;
+        int r0, r1 = 0, s0, s1 = 0;
         for (int i = 1; i < days; i++) {
             r0 = Math.max(s1, r1);
             b0 = Math.max(b1, r1 - prices[i]);

@@ -27,7 +27,7 @@ package dev.algos.snatch.interview_problems.two_pointers;
  */
 public class BackspaceCompare {
 
-    boolean compare(String S, String T) {
+    public boolean compare(String S, String T) {
         int i = S.length() - 1;
         int j = T.length() - 1;
         int countS = 0;

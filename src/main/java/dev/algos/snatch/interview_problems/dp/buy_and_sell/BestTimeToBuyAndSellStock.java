@@ -6,7 +6,7 @@ package dev.algos.snatch.interview_problems.dp.buy_and_sell;
  * Difficulty: **Easy**
  * <p>
  * <p>
- * Say you have an array for which the _i_<sup>th</sup> element is the price of a given stock on day _i_.
+ * Say you have an array for which the ith element is the price of a given stock on day _i_.
  * <p>
  * If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
  * <p>

@@ -20,4 +20,10 @@ class FileRunnerTest {
         String res = fileRunner.runFile("/two_pointers", "TwoSum", new String[]{"[1, 2, 3, 4, 6]", "6"});
         assertThat(res, equalTo("[1, 3]"));
     }
+
+    @Test
+    void testBackspaceCompareRun() {
+        String res = fileRunner.runFile("/two_pointers", "BackspaceCompare", new String[]{"xywrrmp", "xywrrmu#p"});
+        assertThat(res, equalTo("true"));
+    }
 }

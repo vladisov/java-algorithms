@@ -1,5 +1,6 @@
 package dev.algos.snatch.interview_problems.dp;
 
+import dev.algos.snatch.interview_problems.dp.bitmask.NumberOfWaysToWearDifferentHats;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,6 +12,6 @@ class NumberOfWaysToWearDifferentHatsTest {
     @Test
     void test() {
         NumberOfWaysToWearDifferentHats instance = new NumberOfWaysToWearDifferentHats();
-        assertEquals(6, instance.numberWays(List.of(List.of(1, 2, 3), List.of(1, 2, 3), List.of(1, 2, 3))));
+        assertEquals(6, instance.numberWaysNaive(List.of(List.of(1, 2, 3), List.of(1, 2, 3), List.of(1, 2, 3))));
     }
 }
