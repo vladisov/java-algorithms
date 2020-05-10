@@ -25,10 +25,10 @@ import java.util.stream.Collectors;
 @Singleton
 public class FileStorageImpl implements FileStorage {
 
-    private static String PROBLEMS_PATH = "/src/main/java/dev/algos/snatch/interview_problems";
+    private static final String PROBLEMS_PATH = "/src/main/java/dev/algos/snatch/interview_problems";
 
-    String absolutePath;
-    private ConcurrentMap<String, List<FilePath>> paths;
+    private final String absolutePath;
+    private final ConcurrentMap<String, List<FilePath>> paths;
 
     public FileStorageImpl() {
         this.paths = new ConcurrentHashMap<>();

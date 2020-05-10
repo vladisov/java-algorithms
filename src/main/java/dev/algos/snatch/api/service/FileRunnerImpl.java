@@ -1,21 +1,29 @@
 package dev.algos.snatch.api.service;
 
+import dev.algos.snatch.api.parser.GenericClassParser;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 import static dev.algos.snatch.api.util.ArgumentCheck.checkArg;
-import static dev.algos.snatch.api.util.ClassCastUtils.castParam;
 import static java.lang.String.format;
 
 @Slf4j
 @Singleton
 public class FileRunnerImpl implements FileRunner {
 
-    private static String BASE_REFERENCE_PATH = "dev.algos.snatch.interview_problems";
+    private static final String BASE_REFERENCE_PATH = "dev.algos.snatch.interview_problems";
+    private final GenericClassParser classParser;
+
+    @Inject
+    public FileRunnerImpl(GenericClassParser classParser) {
+        this.classParser = classParser;
+    }
 
     @Override
     public String runFile(String path, String fileName, String[] args) {
@@ -23,10 +31,8 @@ public class FileRunnerImpl implements FileRunner {
         try {
             Class<?> clazz = Class.forName(fileReference);
             Method[] methods = clazz.getDeclaredMethods();
-            // we assume we have only one public method, otherwise skip
-            checkArg(methods.length == 1, "Cannot find single public method for execution.");
 
-            Method executable = methods[0];
+            Method executable = getPublic(methods); // find first public TODO change
             Object[] arguments = buildArgs(executable, args);
 
             Constructor<?>[] constructors = clazz.getConstructors();
@@ -39,6 +45,15 @@ public class FileRunnerImpl implements FileRunner {
             log.error("Cannot run the file", e);
         }
         throw new IllegalArgumentException("Couldn't find executable file with provided parameters.");
+    }
+
+    private Method getPublic(Method[] methods) {
+        for (var method : methods) {
+            if (Modifier.isPublic(method.getModifiers())) {
+                return method;
+            }
+        }
+        throw new RuntimeException("Cannot find public method for execution.");
     }
 
     @Override
@@ -55,7 +70,7 @@ public class FileRunnerImpl implements FileRunner {
         checkArg(parameters.length == args.length, "Wrong number of parameters!");
 
         for (int i = 0; i < args.length; i++) {
-            arguments[i] = castParam(args[i], parameters[i]);
+            arguments[i] = classParser.parseParam(args[i], parameters[i]);
         }
         return arguments;
     }
