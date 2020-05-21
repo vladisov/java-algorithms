@@ -65,6 +65,7 @@ public class UnionFind {
      */
     public int root(int i) {
         while (i != arr[i]) {
+
             arr[i] = arr[arr[i]];
             i = arr[i];
         }

@@ -14,11 +14,6 @@ package dev.algos.snatch.interview_problems.sliding_window;
  * Input: [-2,1,-3,4,-1,2,1,-5,4],
  * Output: 6
  * Explanation: [4,-1,2,1] has the largest sum = 6.
- * ```
- * <p>
- * **Follow up:**
- * <p>
- * If you have figured out the O(_n_) solution, try coding another solution using the divide and conquer approach, which is more subtle.
  */
 public class MaximumSubarray {
 

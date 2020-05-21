@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.array;
+package dev.algos.snatch.interview_problems.dp.buy_and_sell;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,12 +22,15 @@ class BestTimeToBuyAndSellStockTest {
     void maxProfitHappyPath() {
         int result = instance.maxProfit(new int[]{7, 1, 5, 3, 6, 4});
         assertThat(result, equalTo(5));
+        assertThat(instance.maxProfitDP(new int[]{7, 1, 5, 3, 6, 4}), equalTo(5));
     }
 
     @Test
     void maxProfitNoTransactions() {
         int result = instance.maxProfit(new int[]{7, 6, 4, 3, 1});
         assertThat(result, equalTo(0));
+        assertThat(instance.maxProfitDP(new int[]{7, 6, 4, 3, 1}), equalTo(0));
+
     }
 
     @Test

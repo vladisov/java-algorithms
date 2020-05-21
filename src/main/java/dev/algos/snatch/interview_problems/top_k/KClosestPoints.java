@@ -1,5 +1,6 @@
 package dev.algos.snatch.interview_problems.top_k;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
@@ -43,6 +44,44 @@ public class KClosestPoints {
         }
         return result;
     }
+
+    public int[][] kClosestQuickSelect(int[][] points, int k) {
+        int lo = 0, hi = points.length - 1;
+        while (lo <= hi) {
+            int pivotIndex = partition(points, lo, hi);
+            if (pivotIndex == k) {
+                break;
+            }
+            if (pivotIndex < k) {
+                lo = pivotIndex + 1;
+            } else {
+                hi = pivotIndex - 1;
+            }
+        }
+        return Arrays.copyOfRange(points, 0, k);
+    }
+
+    private int partition(int[][] points, int lo, int hi) {
+        int[] pivot = points[lo];
+        int i = lo, j = hi;
+        while (i < j) {
+            while (i < j && compare(pivot, points[j])) j--;
+            if (i < j) {
+                points[i] = points[j];
+            }
+            while (i < j && compare(points[i], pivot)) i++;
+            if (i < j) {
+                points[j] = points[i];
+            }
+        }
+        points[j] = pivot;
+        return j;
+    }
+
+    private boolean compare(int[] a, int[] b) {
+        return distanceSqrt(a) <= distanceSqrt(b);
+    }
+    //sqrt((x0 - x1)^2 + (y0 - y1)^2)
 
     private int distanceSqrt(int[] arr) {
         return arr[0] * arr[0] + arr[1] * arr[1];

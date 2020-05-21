@@ -20,5 +20,11 @@ class BinaryTreeZigZagOrderTraversalTest {
         assertThat(result.get(0), contains(3));
         assertThat(result.get(1), contains(20, 9));
         assertThat(result.get(2), contains(15, 7));
+
+        List<List<Integer>> resultStacks = instance.zigzagLevelOrderStacks(root);
+        assertThat(resultStacks, hasSize(3));
+        assertThat(resultStacks.get(0), contains(3));
+        assertThat(resultStacks.get(1), contains(20, 9));
+        assertThat(resultStacks.get(2), contains(15, 7));
     }
 }
