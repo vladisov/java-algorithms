@@ -2,9 +2,11 @@ package dev.algos.snatch.interview_problems.tree_bfs;
 
 import dev.algos.snatch.interview_problems.helpers.TreeNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
@@ -54,6 +56,44 @@ public class BinaryTreeZigZagOrderTraversal {
             }
             lvl++;
             result.add(level);
+        }
+        return result;
+    }
+
+    public List<List<Integer>> zigzagLevelOrderStacks(TreeNode root) {
+        if (root == null) return new LinkedList<>();
+        List<List<Integer>> result = new LinkedList<>();
+        Stack<TreeNode> s1 = new Stack<>();
+        Stack<TreeNode> s2 = new Stack<>();
+        s1.add(root);
+        List<Integer> tmp;
+        while (!s1.isEmpty() || !s2.isEmpty()) {
+            tmp = new ArrayList<>();
+            while (!s1.isEmpty()) {
+                TreeNode node = s1.pop();
+                tmp.add(node.val);
+                if (node.left != null) {
+                    s2.add(node.left);
+                }
+                if (node.right != null) {
+                    s2.add(node.right);
+                }
+            }
+            result.add(new ArrayList<>(tmp));
+            tmp = new ArrayList<>();
+            while (!s2.isEmpty()) {
+                TreeNode node = s2.pop();
+                tmp.add(node.val);
+                if (node.right != null) {
+                    s1.add(node.right);
+                }
+                if (node.left != null) {
+                    s1.add(node.left);
+                }
+            }
+            if (!tmp.isEmpty()) {
+                result.add(new ArrayList<>(tmp));
+            }
         }
         return result;
     }
