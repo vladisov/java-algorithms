@@ -34,6 +34,7 @@ public class MinimumWindowSubstring {
      * since in the worst case, the whole pattern can have distinct characters which will go into the HashMap.
      * In the worst case, we also need O(N) space for the resulting substring,
      * which will happen when the input string is a permutation of the pattern.
+     * https://leetcode.com/problems/minimum-window-substring/
      */
     String findSubstring(String str, String pattern) {
         if (str == null || pattern == null) return "";

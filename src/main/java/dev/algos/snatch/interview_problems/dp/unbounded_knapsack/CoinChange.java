@@ -14,12 +14,12 @@ package dev.algos.snatch.interview_problems.dp.unbounded_knapsack;
  * <p>
  * Input: coins = [2], amount = 3
  * Output: -1
+ * https://leetcode.com/problems/coin-change/
  */
 public class CoinChange {
 
     public int countChangeBUOptimized(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
-
         for (int i = 1; i <= amount; i++) {
             dp[i] = Integer.MAX_VALUE;
             for (int coin : coins) {
