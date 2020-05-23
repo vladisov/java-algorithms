@@ -1,9 +1,11 @@
-package dev.algos.snatch.data_structures.priority_queue;
+package dev.algos.snatch.data_structures.heap;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -57,6 +59,18 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
     }
 
     /**
+     * Priority queue construction, O(nlog(n))
+     *
+     * @param elements to insert
+     */
+    public BinaryHeapQuickRemovals(Collection<T> elements) {
+        this(elements.size());
+        for (T elem : elements) {
+            add(elem);
+        }
+    }
+
+    /**
      * Retrieves and removes the head of this queue, O(log(n))
      * or returns {@code null} if this queue is empty.
      *
@@ -86,7 +100,6 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
      * @param element to add
      */
     public void add(T element) {
-
         if (element == null) {
             throw new IllegalArgumentException();
         }
@@ -94,6 +107,8 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
         heap.add(element);
 
         int indexOfLastElem = size() - 1;
+        addToMap(element, indexOfLastElem);
+
         swim(indexOfLastElem);
     }
 
@@ -108,23 +123,35 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
             return false;
         }
         // Linear removal via search, O(n)
-        for (int i = 0; i < size(); i++) {
-            if (element.equals(heap.get(i))) {
-                removeAt(i);
-                return true;
-            }
+        // for (int i = 0; i < heapSize; i++) {
+        //   if (element.equals(heap.get(i))) {
+        //     removeAt(i);
+        //     return true;
+        //   }
+        // }
+
+        // Logarithmic removal with map, O(log(n))
+        Integer index = mapGet(element);
+        if (index != null) {
+            removeAt(index);
         }
-        return false;
+        return index != null;
     }
 
     public boolean contains(T elem) {
-        // Linear scan to check containment
-        for (int i = 0; i < size(); i++) {
-            if (heap.get(i).equals(elem)) {
-                return true;
-            }
+        //map lookup for O(1)
+        if (elem == null) {
+            return false;
         }
-        return false;
+        return map.containsKey(elem);
+
+        // Linear scan to check containment
+        //for (int i = 0; i < size(); i++) {
+        //    if (heap.get(i).equals(elem)) {
+        //        return true;
+        //    }
+        //}
+        // return false;
     }
 
     /**
@@ -169,6 +196,7 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
 
     public void clear() {
         heap.clear();
+        map.clear();
     }
 
     /**
@@ -187,6 +215,7 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
 
         // Obliterate the value
         heap.remove(indexOfLastElem);
+        mapRemove(removedData, indexOfLastElem);
 
         // Check if the last element was removed
         if (i == indexOfLastElem) {
@@ -202,28 +231,6 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
             swim(i);
         }
         return removedData;
-    }
-
-
-    /**
-     * Add a node value and its index to the map
-     *
-     * @param value to add
-     * @param index where element is located
-     */
-    private void addToMap(T value, int index) {
-
-        TreeSet<Integer> set = map.get(value);
-
-        // New value being inserted into map
-        if (set == null) {
-            set = new TreeSet<>();
-            set.add(index);
-            map.put(value, set);
-        } else {
-            // Value already exists in map
-            set.add(index);
-        }
     }
 
     /**
@@ -292,6 +299,76 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
     }
 
     /**
+     * Add a node value and its index to the map
+     *
+     * @param value to add
+     * @param index where element is located
+     */
+    private void addToMap(T value, int index) {
+
+        TreeSet<Integer> set = map.get(value);
+
+        // New value being inserted into map
+        if (set == null) {
+            set = new TreeSet<>();
+            set.add(index);
+            map.put(value, set);
+        } else {
+            // Value already exists in map
+            set.add(index);
+        }
+    }
+
+    /**
+     * Removes the index at a given value, O(log(n))
+     *
+     * @param value to remove
+     * @param index where value is located
+     */
+    private void mapRemove(T value, int index) {
+        TreeSet<Integer> set = map.get(value);
+        set.remove(index); // TreeSets take O(log(n)) removal time
+        if (set.isEmpty()) {
+            map.remove(value);
+        }
+    }
+
+    /**
+     * Extract an index position for the given value
+     * NOTE: If a value exists multiple times in the heap the highest
+     *
+     * @param value of the heap
+     * @return index is returned (this has arbitrarily been chosen)
+     */
+    private Integer mapGet(T value) {
+        TreeSet<Integer> set = map.get(value);
+        if (set != null) {
+            return set.last();
+        }
+        return null;
+    }
+
+    /**
+     * Exchange the index of two nodes internally within the map
+     *
+     * @param val1      first value
+     * @param val2      second value
+     * @param val1Index first value index
+     * @param val2Index second value index
+     */
+    private void mapSwap(T val1, T val2, int val1Index, int val2Index) {
+
+        Set<Integer> set1 = map.get(val1);
+        Set<Integer> set2 = map.get(val2);
+
+        set1.remove(val1Index);
+        set2.remove(val2Index);
+
+        set1.add(val2Index);
+        set2.add(val1Index);
+    }
+
+    /**
      * Swap two nodes. Assumes i & j are valid, O(1)
      *
      * @param i first node
@@ -303,6 +380,7 @@ public class BinaryHeapQuickRemovals<T extends Comparable<T>> {
 
         heap.set(i, secondNode);
         heap.set(j, firstNode);
+        mapSwap(firstNode, secondNode, i, j);
     }
 }
 

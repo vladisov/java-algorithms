@@ -1,4 +1,4 @@
-package dev.algos.snatch.data_structures.priority_queue;
+package dev.algos.snatch.data_structures.heap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
