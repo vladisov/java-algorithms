@@ -24,6 +24,8 @@ import static dev.algos.snatch.interview_problems.helpers.ArrayUtils.swap;
  * <p>
  * Input: [2, 4, 1, 4, 4]
  * Output: 4
+ * <p>
+ * LeetCode: <a href="https://leetcode.com/problems/find-the-duplicate-number/">287. Find the Duplicate Number</a>
  */
 public class FindDuplicateNumber {
 
@@ -87,7 +89,9 @@ public class FindDuplicateNumber {
      * Fast & Slow pointers
      */
     public int findNumberFastSlow(int[] nums) {
-        if (nums.length == 0) return 0;
+        if (nums.length == 0) {
+            return 0;
+        }
         int fast = 0;
         int slow = 0;
         while (slow < nums.length && fast < nums.length && nums[fast] < nums.length) {

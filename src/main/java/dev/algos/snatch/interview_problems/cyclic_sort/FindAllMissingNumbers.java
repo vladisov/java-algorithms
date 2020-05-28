@@ -22,6 +22,8 @@ import static dev.algos.snatch.interview_problems.helpers.ArrayUtils.swap;
  * <p>
  * Input: [2, 3, 2, 1]
  * Output: 4
+ * <p>
+ * LeetCode: <a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/">448. Find All Numbers Disappeared in an Array</a>
  */
 public class FindAllMissingNumbers {
 
@@ -36,8 +38,7 @@ public class FindAllMissingNumbers {
             }
         }
         List<Integer> result = new ArrayList<>();
-        i = 0;
-        for (; i < nums.length; i++) {
+        for (i = 0; i < nums.length; i++) {
             if (nums[i] != i + 1) {
                 result.add(i + 1);
             }

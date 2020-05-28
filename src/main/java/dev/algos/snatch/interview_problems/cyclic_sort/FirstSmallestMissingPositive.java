@@ -15,6 +15,8 @@ package dev.algos.snatch.interview_problems.cyclic_sort;
  * <p>
  * Input: [7,8,9,11,12]
  * Output: 1
+ * <p>
+ * LeetCode: <a href="https://leetcode.com/problems/missing-number/">268. Missing Number</a>
  */
 public class FirstSmallestMissingPositive {
 
