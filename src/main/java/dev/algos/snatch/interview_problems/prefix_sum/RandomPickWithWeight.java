@@ -22,6 +22,8 @@ import java.util.Random;
  * ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
  * [[[1,3]],[],[],[],[],[]]
  * Output: [null,0,1,1,1,0]
+ * <p>
+ * LeetCode: <a href="https://leetcode.com/problems/random-pick-with-weight/">528. Random Pick with Weight</a>
  */
 public class RandomPickWithWeight {
 
