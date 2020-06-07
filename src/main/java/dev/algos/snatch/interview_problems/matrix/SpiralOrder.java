@@ -39,10 +39,7 @@ class SpiralOrder {
         }
 
         int m = matrix[0].length;
-        int rowStart = 0;
-        int rowEnd = n - 1;
-        int colStart = 0;
-        int colEnd = m - 1;
+        int rowStart = 0, rowEnd = n - 1, colStart = 0, colEnd = m - 1;
         while (rowStart <= rowEnd && colStart <= colEnd) {
             for (int i = colStart; i <= colEnd; i++) {
                 result.add(matrix[rowStart][i]);
