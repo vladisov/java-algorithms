@@ -59,4 +59,38 @@ public class BasicCalculator_II {
         while (!stack.isEmpty()) total += stack.pop();
         return total;
     }
+
+    /**
+     * Time O(N)
+     * Space O(1)
+     */
+    int evaluate(String s) {
+        if (s.isEmpty()) return 0;
+        s = s.replaceAll("\\s+", "");
+        int total = 0, num = 0, top = 0;
+        char operator = '+';
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isDigit(c)) {
+                num = num * 10 + (c - '0');
+            }
+            if (i == s.length() - 1 || !Character.isDigit(c)) {
+                if (operator == '/') {
+                    top = top / num;
+                } else if (operator == '*') {
+                    top = top * num;
+                } else if (operator == '+') {
+                    total += top;
+                    top = num;
+                } else {
+                    total += top;
+                    top = -num;
+                }
+                operator = c;
+                num = 0;
+            }
+        }
+        return total + top;
+    }
+
 }

@@ -1,5 +1,7 @@
 package dev.algos.snatch.interview_problems.reversal_linked_list;
 
+import dev.algos.snatch.interview_problems.helpers.ListNode;
+
 /**
  * Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
  * <p>
@@ -40,14 +42,5 @@ public class OddEvenNodesLinkedList {
         currEven.next = null;
         currOdd.next = dummyEven.next;
         return dummyOdd.next;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
     }
 }
