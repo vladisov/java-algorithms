@@ -3,9 +3,16 @@ package dev.algos.snatch.interview_problems.reversal_linked_list;
 import dev.algos.snatch.data_structures.linked_list.ListNode;
 
 /**
- * Given the head of a LinkedList and two positions ‘p’ and ‘q’, reverse the LinkedList from position ‘p’ to ‘q’.
- * Input: 1->2->3->4->5->NULL, m = 2, n = 4
- * Output: 1->4->3->2->5->NULL
+ * Reverse a singly linked list.
+ * <p>
+ * Example:
+ * Input: 1->2->3->4->5->NULL
+ * Output: 5->4->3->2->1->NULL
+ * <p>
+ * Follow up:
+ * A linked list can be reversed either iteratively or recursively. Could you implement both?
+ * <p>
+ * LeetCode: <a href="https://leetcode.com/problems/reverse-linked-list-ii/">92. Reverse Linked List II</a>
  */
 public class ReverseLinkedListBetween {
 
@@ -32,10 +39,11 @@ public class ReverseLinkedListBetween {
             k--;
         }
         start.next = curr;
-        if (preStart != null)
+        if (preStart != null) {
             preStart.next = prev;
-        else
+        } else {
             head = prev;
+        }
 
         return head;
     }
