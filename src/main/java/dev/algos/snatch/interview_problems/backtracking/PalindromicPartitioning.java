@@ -17,7 +17,8 @@ import java.util.List;
  * ["a","a","b"]
  * ]
  */
-public class PalindromicPartitioning {
+public class
+PalindromicPartitioning {
 
     /**
      * Time O(n*(2^n))

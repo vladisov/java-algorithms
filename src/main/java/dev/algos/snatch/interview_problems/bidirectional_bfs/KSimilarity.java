@@ -5,6 +5,28 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
+/**
+ * Strings A and B are K-similar (for some non-negative integer K) if we can swap the positions of two letters in A exactly K times so that the resulting string equals B.
+ * <p>
+ * Given two anagrams A and B, return the smallest K for which A and B are K-similar.
+ * <p>
+ * Example 1:
+ * <p>
+ * Input: A = "ab", B = "ba"
+ * Output: 1
+ * Example 2:
+ * <p>
+ * Input: A = "abc", B = "bca"
+ * Output: 2
+ * Example 3:
+ * <p>
+ * Input: A = "abac", B = "baca"
+ * Output: 2
+ * Example 4:
+ * <p>
+ * Input: A = "aabc", B = "abca"
+ * Output: 2
+ */
 public class KSimilarity {
 
     public int kSimilarity(String a, String b) {
