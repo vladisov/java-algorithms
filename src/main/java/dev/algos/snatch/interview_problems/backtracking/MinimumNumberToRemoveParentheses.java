@@ -1,5 +1,6 @@
 package dev.algos.snatch.interview_problems.backtracking;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -58,7 +59,47 @@ public class MinimumNumberToRemoveParentheses {
         removeRec(s, index + 1, result, tmp, left, right);
     }
 
+
     public List<String> removeInvalidParentheses(String s) {
-        return List.of();
+        int left = 0, right = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                left++;
+            } else if (s.charAt(i) == ')') {
+                if (left > 0) {
+                    left--;
+                } else {
+                    right++;
+                }
+            }
+        }
+
+        Set<String> set = new HashSet<>();
+        dfs(s, 0, left, right, 0, new StringBuilder(), set);
+        return new ArrayList<>(set);
+    }
+
+    private void dfs(String s, int i, int left, int right, int open, StringBuilder sb, Set<String> result) {
+        if (left < 0 || right < 0 || open < 0) {
+            return;
+        }
+        if (i == s.length()) {
+            if (left == 0 && right == 0 && open == 0) {
+                result.add(sb.toString());
+            }
+            return;
+        }
+
+        char c = s.charAt(i);
+        if (c == '(') {
+            dfs(s, i + 1, left - 1, right, open + 1, sb, result);
+            dfs(s, i + 1, left, right, open, sb.append(c), result);
+        } else if (c == ')') {
+            dfs(s, i + 1, left, right - 1, open - 1, sb, result);
+            dfs(s, i + 1, left, right, open, sb.append(c), result);
+        } else {
+            dfs(s, i + 1, left, right, open, sb.append(c), result);
+        }
+        sb.deleteCharAt(sb.length() - 1);
     }
 }

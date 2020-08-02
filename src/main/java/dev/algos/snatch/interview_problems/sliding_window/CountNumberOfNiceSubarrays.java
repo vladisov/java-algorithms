@@ -41,7 +41,7 @@ public class CountNumberOfNiceSubarrays {
                 start++;
             }
             if (count == k) {
-                res += odds.peekFirst() - start + 1;
+                res += odds.peekFirst() - start + 1; // trick here : we can add all subarrays between end and start
             }
         }
         return res;

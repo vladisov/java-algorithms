@@ -5,7 +5,9 @@ import java.util.Map;
 import java.util.TreeSet;
 
 /**
- * Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the nth lake, the nth lake becomes full of water. If it rains over a lake which is full of water, there will be a flood. Your goal is to avoid the flood in any lake.
+ * Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the nth lake,
+ * the nth lake becomes full of water. If it rains over a lake which is full of water, there will be a flood.
+ * Your goal is to avoid the flood in any lake.
  * <p>
  * Given an integer array rains where:
  * <p>

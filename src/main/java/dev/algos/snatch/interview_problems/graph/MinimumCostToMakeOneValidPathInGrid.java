@@ -22,7 +22,7 @@ import java.util.Queue;
  */
 public class MinimumCostToMakeOneValidPathInGrid {
 
-    int[][] dirs = new int[][]{
+    int[][] dirs = {
             {0, 1},
             {0, -1},
             {1, 0},

@@ -17,7 +17,7 @@ public class NumberOfTiles {
 
     /**
      * Naive backtracking subsets
-     * Time O(N!)
+     * Time O(26^N)
      * Space O(N) recursion stack
      */
     public int numOfTiles(String s) {

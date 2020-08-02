@@ -33,18 +33,15 @@ public class SortsPlayground {
         for (int i = 0; i < arr.length; i++) {
             count[arr[i] - min]++;
         }
-        for (int i = 0; i < count.length; i++) {
-            count[i] += count[i + 1];
-        }
-        for (int i = 1; i < arr.length; i++) {
-            count[i] = count[i - 1] + arr[i];
+        for (int i = 1; i < count.length; i++) {
+            count[i] += count[i - 1];
         }
         int[] result = new int[arr.length];
-        for (int i = arr.length - 1; i > 0; i--) {
-            if (arr[i] != 0) {
-                result[count[arr[i] - min]]--;
-            }
+        for (int i = arr.length - 1; i >= 0; i--) {
+            result[count[arr[i] - min] - 1] = arr[i];
+            count[arr[i] - min]--;
         }
+
         System.arraycopy(result, 0, arr, 0, arr.length);
     }
 

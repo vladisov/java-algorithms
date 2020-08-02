@@ -2,6 +2,8 @@ package dev.algos.snatch.interview_problems.tree_dfs;
 
 import dev.algos.snatch.interview_problems.helpers.TreeNode;
 
+import java.util.Stack;
+
 /**
  * Two elements of a binary search tree (BST) are swapped by mistake.
  * <p>
@@ -38,5 +40,32 @@ public class RecoverBinarySearchTree {
 
         prev = root;
         helper(root.right);
+    }
+
+    public void recoverTreeIterative(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode prev = null, leftSwap = null, rightSwap = null;
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.add(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (prev != null && prev.val > root.val) {
+                rightSwap = root;
+                if (leftSwap == null) {
+                    leftSwap = prev;
+                }
+            }
+            prev = root;
+            root = root.right;
+        }
+        swap(leftSwap, rightSwap);
+    }
+
+    private void swap(TreeNode root, TreeNode prev) {
+        int tmp = root.val;
+        root.val = prev.val;
+        prev.val = tmp;
     }
 }

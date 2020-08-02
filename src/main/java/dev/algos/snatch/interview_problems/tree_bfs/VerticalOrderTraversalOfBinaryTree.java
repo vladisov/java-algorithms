@@ -2,13 +2,12 @@ package dev.algos.snatch.interview_problems.tree_bfs;
 
 import dev.algos.snatch.interview_problems.helpers.TreeNode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import java.util.TreeSet;
 
 /**
  * Given a binary tree, return the vertical order traversal of its nodes values.
@@ -44,60 +43,55 @@ import java.util.TreeSet;
 public class VerticalOrderTraversalOfBinaryTree {
 
     /**
-     * Time O(NlogD) where D duplicates D might be N/? -> N
+     * Time O(N)
      * Space O(N)
      */
-    public List<List<Integer>> verticalTraversal(TreeNode root) {
-        Map<Integer, List<Integer>> map = traverse(root);
-        List<List<Integer>> result = new ArrayList<>(map.size());
-
-        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-        for (var key : map.keySet()) {
-            min = Math.min(min, key);
-            max = Math.max(max, key);
-        }
-
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        if (root == null) return List.of();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        int[] sides = traverse(root, map);
+        int min = sides[0];
+        int max = sides[1];
+        List<List<Integer>> result = new ArrayList<>();
         for (int i = min; i <= max; i++) {
             result.add(map.get(i));
         }
         return result;
     }
 
-    Map<Integer, List<Integer>> traverse(TreeNode node) {
-        if (node == null) return Map.of();
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        Queue<TreeSide> queue = new LinkedList<>();
-        queue.add(new TreeSide(node, 0));
+    private int[] traverse(TreeNode root, Map<Integer, List<Integer>> map) {
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(new Node(root, 0));
+        int min = 0, max = 0;
         while (!queue.isEmpty()) {
             int size = queue.size();
-            Map<Integer, TreeSet<Integer>> lvlMap = new HashMap<>();
             for (int i = 0; i < size; i++) {
-                TreeSide nodeSide = queue.poll();
-                lvlMap.putIfAbsent(nodeSide.side, new TreeSet<>());
-                lvlMap.get(nodeSide.side).add(nodeSide.node.val);
+                var node = queue.poll();
 
-                if (nodeSide.node.left != null) {
-                    queue.add(new TreeSide(nodeSide.node.left, nodeSide.side - 1));
+                map.putIfAbsent(node.side, new ArrayList<>());
+                map.get(node.side).add(node.node.val);
+
+                max = Math.max(max, node.side);
+                min = Math.min(min, node.side);
+
+                if (node.node.left != null) {
+                    queue.add(new Node(node.node.left, node.side - 1));
                 }
-                if (nodeSide.node.right != null) {
-                    queue.add(new TreeSide(nodeSide.node.right, nodeSide.side + 1));
+                if (node.node.right != null) {
+                    queue.add(new Node(node.node.right, node.side + 1));
                 }
-            }
-            for (Map.Entry<Integer, TreeSet<Integer>> entry : lvlMap.entrySet()) {
-                map.putIfAbsent(entry.getKey(), new LinkedList<>());
-                map.get(entry.getKey()).addAll(entry.getValue());
             }
         }
-        return map;
+        return new int[]{min, max};
     }
 
-    static class TreeSide {
+    static class Node {
         TreeNode node;
         int side;
 
-        public TreeSide(TreeNode node, int side) {
-            this.side = side;
+        public Node(TreeNode node, int i) {
             this.node = node;
+            this.side = i;
         }
     }
 }

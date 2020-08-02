@@ -10,7 +10,7 @@ public class MostFrequentValueInIntervals {
     static int MAX = 1000000;
 
     /**
-     * Time O(N) if no need to sort and O(NlogN) if sort
+     * Time O(N)
      */
     public int findMostFrequent(int[][] intervals) {
         //sort if unsorted

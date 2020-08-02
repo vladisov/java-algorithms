@@ -6,11 +6,12 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 public class LFU<K, V> implements Cache<K, V> {
-    private int capacity, min;
-    private Map<K, V> values;
-    private Map<K, Integer> counts;
+    private final int capacity;
+    private final Map<K, V> values;
+    private final Map<K, Integer> counts;
     //map count -> dll
-    private Map<Integer, LinkedHashSet<K>> lists;
+    private final Map<Integer, LinkedHashSet<K>> lists;
+    private int min;
 
     public LFU(int capacity) {
         this.min = -1;
