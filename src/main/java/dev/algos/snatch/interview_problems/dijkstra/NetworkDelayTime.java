@@ -22,7 +22,9 @@ import java.util.Queue;
 public class NetworkDelayTime {
 
     /**
-     * Time O(ElogN)
+     * Basically, the time complexity is O(ElogV) since we may add each vertex into the pq (logV) and we do this for each of its neighbours (at most E times).
+     * <p>
+     * Time O(ElogV)
      * Space O(V + E)
      */
     int findSum(int[][] times, int n, int k) {

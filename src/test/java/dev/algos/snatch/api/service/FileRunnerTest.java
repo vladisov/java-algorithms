@@ -31,8 +31,20 @@ class FileRunnerTest {
     }
 
     @Test
+    void testBackspaceCompareEmptyString() {
+        String res = fileRunner.runFile("/two_pointers", "BackspaceCompare", new String[]{"", "xywrrmu#p"});
+        assertThat(res, is("false"));
+    }
+
+    @Test
     void testDijkstraRun() {
         String res = fileRunner.runFile("/dijkstra", "MinimumFlightsWithKStops", new String[]{"5", "[[0, 1, 5], [1, 2, 5], [0, 3, 2], [3, 1, 2], [1, 4, 1], [4, 2, 1]]", "0", "2", "2"});
-        assertThat(res, is("true"));
+        assertThat(res, is("7"));
+    }
+
+    @Test
+    void testDijkstraEmptyArray() {
+        String res = fileRunner.runFile("/dijkstra", "MinimumFlightsWithKStops", new String[]{"5", "[[]]", "0", "2", "2"});
+        assertThat(res, is("-1"));
     }
 }

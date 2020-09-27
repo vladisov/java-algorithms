@@ -17,7 +17,8 @@ class WebModule extends AbstractModule {
 
     @NotNull
     public static WebModule create() {
-        return new WebModule(Javalin.create());
+        Javalin app = Javalin.create();
+        return new WebModule(app);
     }
 
     @Override

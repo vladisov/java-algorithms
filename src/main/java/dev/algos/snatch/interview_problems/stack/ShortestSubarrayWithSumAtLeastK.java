@@ -5,6 +5,10 @@ import java.util.Deque;
 
 public class ShortestSubarrayWithSumAtLeastK {
 
+    /**
+     * Time O(N)
+     * Space O(N)
+     */
     public int shortestSubarray(int[] A, int K) {
         int n = A.length + 1;
         int[] preSum = new int[n];
