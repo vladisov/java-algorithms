@@ -26,7 +26,7 @@ public class FirstSmallestMissingPositive {
      */
     public int firstMissingPositive(int[] nums) {
         for (int i = 0; i < nums.length; ) {
-            int j = nums[i] - 1;
+            int j = nums[i] - 1; //one based index
             if (j < nums.length && j >= 0 && nums[j] != nums[i]) {
                 swap(nums, i, j);
             } else {

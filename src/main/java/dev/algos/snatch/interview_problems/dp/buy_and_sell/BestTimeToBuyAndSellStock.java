@@ -65,4 +65,27 @@ public class BestTimeToBuyAndSellStock {
         }
         return sell[days - 1];
     }
+
+    public int maxProfitDP_V2(int[] prices) {
+        if (prices.length == 0) return 0;
+        int days = prices.length;
+        int[][] dp = new int[days][2];
+
+        dp[0][1] = -prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]); //if we don't hold (sold prev day)
+            dp[i][1] = Math.max(dp[i - 1][1], -prices[i]); // if we hold
+        }
+        return dp[days - 1][0];
+    }
+
+    public int maxProfitDP_V2_Optimized(int[] prices) {
+        if (prices.length == 0) return 0;
+        int prevHold = -prices[0], prevSold = 0; // state 1, 0
+        for (int i = 1; i < prices.length; i++) {
+            prevSold = Math.max(prevSold, prevHold + prices[i]); //dp[i][0]
+            prevHold = Math.max(prevHold, -prices[i]); //dp[i][1]
+        }
+        return prevSold;
+    }
 }

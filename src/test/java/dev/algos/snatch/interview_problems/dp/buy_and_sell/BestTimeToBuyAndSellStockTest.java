@@ -23,6 +23,8 @@ class BestTimeToBuyAndSellStockTest {
         int result = instance.maxProfit(new int[]{7, 1, 5, 3, 6, 4});
         assertThat(result, equalTo(5));
         assertThat(instance.maxProfitDP(new int[]{7, 1, 5, 3, 6, 4}), equalTo(5));
+        assertThat(instance.maxProfitDP_V2(new int[]{7, 1, 5, 3, 6, 4}), equalTo(5));
+        assertThat(instance.maxProfitDP_V2_Optimized(new int[]{7, 1, 5, 3, 6, 4}), equalTo(5));
     }
 
     @Test
@@ -30,6 +32,8 @@ class BestTimeToBuyAndSellStockTest {
         int result = instance.maxProfit(new int[]{7, 6, 4, 3, 1});
         assertThat(result, equalTo(0));
         assertThat(instance.maxProfitDP(new int[]{7, 6, 4, 3, 1}), equalTo(0));
+        assertThat(instance.maxProfitDP_V2(new int[]{7, 6, 4, 3, 1}), equalTo(0));
+        assertThat(instance.maxProfitDP_V2_Optimized(new int[]{7, 6, 4, 3, 1}), equalTo(0));
 
     }
 

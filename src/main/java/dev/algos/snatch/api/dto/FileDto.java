@@ -1,9 +1,13 @@
 package dev.algos.snatch.api.dto;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = true)
 public class FileDto extends PathItemDto {
     @NonNull
     private String content;

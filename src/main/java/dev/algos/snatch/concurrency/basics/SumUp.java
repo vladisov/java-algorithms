@@ -17,13 +17,8 @@ public class SumUp {
         SumUp s1 = new SumUp(1, MAX_NUM / 2);
         SumUp s2 = new SumUp(1 + (MAX_NUM / 2), MAX_NUM);
 
-        Thread t1 = new Thread(() -> {
-            s1.add();
-        });
-
-        Thread t2 = new Thread(() -> {
-            s2.add();
-        });
+        Thread t1 = new Thread(s1::add);
+        Thread t2 = new Thread(s2::add);
 
         t1.start();
         t2.start();

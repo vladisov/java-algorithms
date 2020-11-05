@@ -10,5 +10,6 @@ class BestTimeToBuyAndSellStockAtMostKTransactionsTest {
     void test() {
         BestTimeToBuyAndSellStockAtMostKTransactions instance = new BestTimeToBuyAndSellStockAtMostKTransactions();
         assertEquals(2, instance.maxProfit(2, new int[]{2, 4, 1}));
+        assertEquals(2, instance.maxProfitDP(2, new int[]{2, 4, 1}));
     }
 }

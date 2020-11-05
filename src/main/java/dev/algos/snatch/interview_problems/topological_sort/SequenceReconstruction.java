@@ -1,8 +1,8 @@
 package dev.algos.snatch.interview_problems.topological_sort;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -57,49 +57,45 @@ public class SequenceReconstruction {
      * Space O(V + N)
      */
     public boolean sequenceReconstruction(int[] org, List<List<Integer>> seqs) {
-        Map<Integer, List<Integer>> graph = new HashMap<>();
-        Map<Integer, Integer> inDegree = new HashMap<>();
-        for (List<Integer> seq : seqs) {
-            Integer prev = null;
-            for (Integer num : seq) {
-                if (prev != null) {
-                    graph.putIfAbsent(prev, new ArrayList<>());
-                    graph.get(prev).add(num);
-                    inDegree.putIfAbsent(prev, 0);
-                    inDegree.put(num, inDegree.getOrDefault(num, 0) + 1);
-                }
-                graph.putIfAbsent(num, new ArrayList<>());
-                prev = num;
+        if (seqs.isEmpty()) return false;
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<Integer, Integer> indegree = new HashMap<>();
+        for (var seq : seqs) {
+            if (seq.isEmpty()) continue;
+            map.putIfAbsent(seq.get(0), new ArrayList<>());
+            for (int i = 1; i < seq.size(); i++) {
+                int prev = seq.get(i - 1);
+                int curr = seq.get(i);
+                if (prev == curr) return false;
+
+                map.putIfAbsent(curr, new ArrayList<>());
+                map.get(prev).add(curr);
+                indegree.put(curr, indegree.getOrDefault(curr, 0) + 1);
             }
-            inDegree.putIfAbsent(prev, 0);
         }
-        if (graph.size() != org.length) {
-            return false;
-        }
-        Queue<Integer> queue = new LinkedList<>();
-        for (int num : org) {
-            if (inDegree.get(num) == 0) {
+        if (map.size() != org.length) return false;
+        Queue<Integer> queue = new ArrayDeque<>();
+        for (int num : map.keySet()) {
+            if (indegree.get(num) == null) {
                 queue.add(num);
             }
         }
-
-        int count = 0;
+        int count = 0, index = 0;
         while (!queue.isEmpty()) {
-            if (queue.size() > 1) {
+            if (queue.size() > 1 || queue.peek() != org[index++]) {
                 return false;
             }
-            int vertex = queue.poll();
             count++;
-            for (int nei : graph.get(vertex)) {
-                inDegree.put(nei, inDegree.getOrDefault(nei, 0) - 1);
-                if (inDegree.get(nei) == 0) {
-                    queue.add(nei);
+            int num = queue.poll();
+            if (map.containsKey(num)) {
+                for (int adj : map.get(num)) {
+                    indegree.put(adj, indegree.get(adj) - 1);
+                    if (indegree.get(adj) == 0) {
+                        queue.add(adj);
+                    }
                 }
             }
         }
-        if (count != org.length) {
-            return false;
-        }
-        return true;
+        return count == org.length;
     }
 }

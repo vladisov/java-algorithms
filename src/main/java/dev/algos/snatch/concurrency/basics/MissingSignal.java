@@ -30,4 +30,9 @@ public class MissingSignal {
 
         System.out.println("Program Exiting.");
     }
+
+    public static void main(String[] args) throws InterruptedException {
+        MissingSignal missingSignal = new MissingSignal();
+        missingSignal.example();
+    }
 }

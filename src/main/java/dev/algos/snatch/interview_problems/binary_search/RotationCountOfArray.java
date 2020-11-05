@@ -29,7 +29,7 @@ public class RotationCountOfArray {
             if (arr[mid] < arr[hi]) {
                 hi = mid;
             } else {
-                lo = lo + 1;
+                lo = mid + 1;
             }
         }
         return lo;
