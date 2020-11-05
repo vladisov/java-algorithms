@@ -37,16 +37,17 @@ public class BestTimeToBuyAndSellStockAtMost2Transactions {
     public int maxProfit(int[] prices) {
         if (prices.length == 0) return 0;
         int days = prices.length;
-        int[][] buy = new int[days][2];
-        int[][] sell = new int[days][2];
-        buy[0][0] = -prices[0];
-        buy[0][1] = -prices[0];
+        int[][] hold = new int[days][2];
+        int[][] no_hold = new int[days][2];
+        hold[0][0] = -prices[0];
+        hold[0][1] = -prices[0];
         for (int i = 1; i < prices.length; i++) {
-            buy[i][0] = Math.max(buy[i - 1][0], -prices[i]);
-            sell[i][0] = Math.max(sell[i - 1][0], buy[i - 1][0] + prices[i]);
-            buy[i][1] = Math.max(buy[i - 1][1], sell[i - 1][0] - prices[i]);
-            sell[i][1] = Math.max(sell[i - 1][1], buy[i - 1][1] + prices[i]);
+            hold[i][0] = Math.max(hold[i - 1][0], -prices[i]);
+            no_hold[i][0] = Math.max(no_hold[i - 1][0], hold[i - 1][0] + prices[i]);
+            hold[i][1] = Math.max(hold[i - 1][1], no_hold[i - 1][0] - prices[i]);
+            no_hold[i][1] = Math.max(no_hold[i - 1][1], hold[i - 1][1] + prices[i]);
         }
-        return Math.max(sell[days - 1][0], sell[days - 1][1]);
+        return Math.max(no_hold[days - 1][0], no_hold[days - 1][1]);
     }
+
 }

@@ -1,6 +1,9 @@
 package dev.algos.snatch.interview_problems.dp.longest_common_subsequence;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Given an unsorted array of integers, find the length of longest increasing subsequence.
@@ -17,6 +20,20 @@ import java.util.Arrays;
  * Follow up: Could you improve it to O(n log n) time complexity?
  */
 public class LongestIncreasingSubsequence {
+
+    public int lengthOfLISBinarySearch(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        for (int num : nums) {
+            int pile = Collections.binarySearch(list, num); //returns position
+            if (pile < 0) pile = ~pile; // -10 -> 9 (invert bits) pile = Math.abs(pile) - 1
+            if (pile == list.size()) {
+                list.add(num);
+            } else {
+                list.set(pile, num);
+            }
+        }
+        return list.size();
+    }
 
     public int lengthOfLISOptimized(int[] nums) {
         int[] arr = new int[nums.length];

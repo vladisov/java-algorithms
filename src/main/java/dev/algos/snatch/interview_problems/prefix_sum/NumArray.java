@@ -2,7 +2,6 @@ package dev.algos.snatch.interview_problems.prefix_sum;
 
 public class NumArray {
     int[] sum;
-    int[] nums;
 
     public NumArray(int[] nums) {
         sum = new int[nums.length + 1];

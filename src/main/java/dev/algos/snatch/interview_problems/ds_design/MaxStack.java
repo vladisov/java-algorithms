@@ -9,7 +9,7 @@ public class MaxStack {
     DoubleLinkedList dll;
 
     public MaxStack() {
-        map = new TreeMap();
+        map = new TreeMap<>();
         dll = new DoubleLinkedList();
     }
 
