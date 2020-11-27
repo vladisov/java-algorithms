@@ -72,7 +72,7 @@ public class CanPartitionSum {
             return false;
 
 
-        Boolean dp[][] = new Boolean[num.length][sum / 2 + 1];
+        Boolean[][] dp = new Boolean[num.length][sum / 2 + 1];
 
         for (int i = 0; i < num.length; i++) {
             dp[i][0] = true;
@@ -123,4 +123,27 @@ public class CanPartitionSum {
         }
         return dp[sum / 2];
     }
+
+    /**
+     * Kotlin version
+     */
+//    fun canPartition(nums: IntArray): Boolean {
+//        var sum = nums.sum()
+//        if (sum % 2 != 0) return false
+//        sum /= 2
+//        var prev = BooleanArray(sum + 1)
+//        prev[0] = true
+//        for (i in nums.size - 2 downTo 0) {
+//            val curr = BooleanArray(sum + 1)
+//            for (s in 0..sum) {
+//                val skip = prev[s]
+//                val take = if (s - nums[i] >= 0) prev[s - nums[i]] else false
+//                if (skip || take) {
+//                    curr[s] = true
+//                }
+//            }
+//            prev = curr
+//        }
+//        return prev[sum]
+//    }
 }

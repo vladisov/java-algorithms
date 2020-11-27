@@ -44,7 +44,7 @@ public class Subsets {
 
     /**
      * Time complexity O(2^N)
-     * Space complexity O(2^2)
+     * Space complexity O(2^N)
      */
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();

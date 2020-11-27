@@ -11,7 +11,7 @@ public class SegmentTreeArray implements SegmentTree {
     public SegmentTreeArray(int[] arr) {
         int n = arr.length;
         //Height of segment tree
-        int height = (int) (Math.ceil(Math.log(n) / Math.log(2)));
+        int height = (int) (Math.ceil(Math.log(n) / Math.log(2))); // log2(n)
         //Maximum size of segment tree
         int max_size = 2 * (1 << height) - 1;
         tree = new int[max_size]; // Memory allocation

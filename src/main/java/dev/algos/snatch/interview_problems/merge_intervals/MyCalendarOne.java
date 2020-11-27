@@ -24,12 +24,12 @@ import java.util.TreeMap;
  * The first event can be booked.  The second can't because time 15 is already booked by another event.
  * The third event can be booked, as the first event takes every time less than 20, but not including 20.
  */
-public class MyCalendar_I {
+public class MyCalendarOne {
 
     List<Event> list;
     TreeMap<Integer, Integer> calendar;
 
-    public MyCalendar_I() {
+    public MyCalendarOne() {
         list = new ArrayList<>();
         calendar = new TreeMap<>(); // for another implementation
     }
