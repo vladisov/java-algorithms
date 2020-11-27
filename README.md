@@ -1,37 +1,4 @@
-#How to:
+#### Leetcode questions and answers.
 
-If input array is sorted then
-    - Binary search
-    - Two pointers
-
-If asked for all permutations/subsets then
-    - Backtracking
-
-If given a tree then
-    - DFS
-    - BFS
-
-If given a graph then
-    - DFS
-    - BFS
-
-If given a linked list then
-    - Two pointers
-    - Fast & Slow pointrs
-
-If recursion is banned then
-    - Stack
-
-If asked for maximum/minumum subarray/subset/options then
-    - Dynamic programming
-
-If asked for top/least K items then
-    - Heap
-
-If asked for common strings then
-    - Map
-    - Trie
-
-Else
-    - Map/Set for O(1) time & O(n) space
-    - Sort input for O(nlogn) time and O(1) space
+**This is complementary repository of:**
+https://www.notion.so/vladisov/Interview-1e5201bc1d3a41eaa30f01d4cc5cf27f
