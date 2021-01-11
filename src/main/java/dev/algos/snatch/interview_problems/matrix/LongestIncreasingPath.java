@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class LongestIncreasingPath {
 
-    private static int[][] dirs = new int[][]{
+    private static final int[][] dirs = new int[][]{
             {0, 1},
             {1, 0},
             {0, -1},

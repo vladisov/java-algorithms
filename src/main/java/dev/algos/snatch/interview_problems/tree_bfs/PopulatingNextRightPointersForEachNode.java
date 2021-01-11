@@ -26,9 +26,8 @@ public class PopulatingNextRightPointersForEachNode {
      * Time O(n)
      * Space O(n)
      */
-    //TODO optimize to constant space and test
     public TreeNodeNext connect(TreeNodeNext root) {
-        if (root == null) return root;
+        if (root == null) return null;
         Queue<TreeNodeNext> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
@@ -50,4 +49,39 @@ public class PopulatingNextRightPointersForEachNode {
         }
         return root;
     }
+
+    /**
+     * Kotlin version with constant space
+     * TC O(N)
+     * SC O(1)
+     */
+    /*
+    class Node(var `val`: Int) {
+        var left: Node? = null
+        var right: Node? = null
+        var next: Node? = null
+    }
+
+    fun connect(_root: Node?): Node? {
+        var root = _root
+        val tmp = Node(0)
+        while (root != null) {
+            var child = tmp
+            while (root != null) {
+                if (root.left != null) {
+                    child.next = root.left
+                    child = child.next!!
+                }
+                if (root.right != null) {
+                    child.next = root.right
+                    child = child.next!!
+                }
+                root = root.next
+            }
+            root = tmp.next
+            tmp.next = null
+        }
+        return _root
+    }
+     */
 }

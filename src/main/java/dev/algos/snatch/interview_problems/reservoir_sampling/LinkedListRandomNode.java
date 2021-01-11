@@ -1,6 +1,8 @@
 package dev.algos.snatch.interview_problems.reservoir_sampling;
 
 
+import dev.algos.snatch.interview_problems.helpers.ListNode;
+
 import java.util.Random;
 
 /**
@@ -68,20 +70,5 @@ public class LinkedListRandomNode {
             i++;
         }
         return res;
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-
     }
 }

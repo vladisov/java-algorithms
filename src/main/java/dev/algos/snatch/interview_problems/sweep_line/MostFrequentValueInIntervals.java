@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.prefix_sum;
+package dev.algos.snatch.interview_problems.sweep_line;
 
 /**
  * Given an unsorted list of start and end time ( a range basically),

@@ -14,9 +14,7 @@ public class StoneGame_IV {
 
     // 0 - min, 1 - max
     int helper(int n, int turn, Integer[][] dp) {
-        if (n == 0) {
-            return turn;
-        }
+        if (n == 0) return turn;
         int next = Math.abs(turn - 1);
         if (dp[n][next] == null) {
             int ans = turn; // curr turn

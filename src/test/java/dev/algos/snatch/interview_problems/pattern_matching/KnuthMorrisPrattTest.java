@@ -2,6 +2,7 @@ package dev.algos.snatch.interview_problems.pattern_matching;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class KnuthMorrisPrattTest {
@@ -16,6 +17,13 @@ class KnuthMorrisPrattTest {
     @Test
     void testTable() {
         KnuthMorrisPratt kmp = new KnuthMorrisPratt();
-        kmp.buildTable("dsgwadsgz");
+        assertEquals(new int[]{0, 0, 0, 0, 0, 1, 2, 3}, kmp.buildTable("dsgwadsgz"));
+    }
+
+    @Test
+    void testTableKT() {
+        KnuthMorrisPrattKT kmp = new KnuthMorrisPrattKT();
+//        assertEquals(new int[]{0,0,0,0,0,1,2,3}, kmp.buildTable("dsgwadsgz"));
+        assertEquals(new int[]{0, 0, 0, 0, 0, 1, 2, 3}, kmp.buildTable("AAACAAAAAC"));
     }
 }
