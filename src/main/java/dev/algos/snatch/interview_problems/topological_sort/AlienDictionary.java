@@ -1,60 +1,66 @@
 package dev.algos.snatch.interview_problems.topological_sort;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import java.util.Set;
 
+/**
+ * https://leetcode.com/problems/alien-dictionary/
+ */
 public class AlienDictionary {
 
-    public String alienOrderKhan(String[] words) {
-        Map<Character, Set<Character>> map = new HashMap<>();
-        Map<Character, Integer> degree = new HashMap<>();
-        StringBuilder result = new StringBuilder();
-        if (words == null || words.length == 0) return result.toString();
-        for (String s : words) {
-            for (char c : s.toCharArray()) {
-                degree.put(c, 0);
+    /**
+     * Time O(C + E?) - all characters
+     * Space O(C)
+     */
+    public String alienOrder(String[] words) {
+        Map<Character, List<Character>> map = new HashMap<>();
+        Map<Character, Integer> indegree = new HashMap<>();
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                indegree.putIfAbsent(c, 0);
             }
         }
         for (int i = 0; i < words.length - 1; i++) {
-            String cur = words[i];
+            String curr = words[i];
             String next = words[i + 1];
-            int length = Math.min(cur.length(), next.length());
-            for (int j = 0; j < length; j++) {
-                char first = cur.charAt(j);
-                char second = next.charAt(j);
-                if (first != second) {
-                    Set<Character> set = new HashSet<>();
-                    map.putIfAbsent(first, set);
-                    if (map.containsKey(first)) set = map.get(first);
-                    if (!set.contains(second)) {
-                        set.add(second);
-                        map.put(first, set);
-                        degree.put(second, degree.get(second) + 1);
-                    }
+            int len = Math.min(curr.length(), next.length());
+            for (int j = 0; j < len; j++) {
+                if (curr.charAt(j) != next.charAt(j)) {
+                    map.putIfAbsent(curr.charAt(j), new ArrayList<>());
+                    map.putIfAbsent(next.charAt(j), new ArrayList<>());
+                    map.get(curr.charAt(j)).add(next.charAt(j));
+                    indegree.put(next.charAt(j), indegree.get(next.charAt(j)) + 1);
                     break;
                 }
+                if (j == len - 1 && curr.length() > next.length()) return "";
             }
         }
-        Queue<Character> queue = new LinkedList<>();
-        for (char c : degree.keySet()) {
-            if (degree.get(c) == 0) queue.add(c);
+
+        Queue<Character> queue = new ArrayDeque<>();
+        for (var entry : indegree.entrySet()) {
+            if (entry.getValue() == 0) {
+                queue.add(entry.getKey());
+            }
         }
+        StringBuilder sb = new StringBuilder();
         while (!queue.isEmpty()) {
             char c = queue.poll();
-            result.append(c);
+            sb.append(c);
             if (map.containsKey(c)) {
-                for (char nei : map.get(c)) {
-                    degree.put(nei, degree.get(nei) - 1);
-                    if (degree.get(nei) == 0) queue.add(nei);
+                for (var child : map.get(c)) {
+                    indegree.put(child, indegree.getOrDefault(child, 0) - 1);
+                    if (indegree.get(child) == 0) {
+                        queue.add(child);
+                    }
                 }
             }
-        }
-        if (result.length() != degree.size()) return "";
-        return result.toString();
-    }
 
+
+        }
+        return sb.length() == indegree.size() ? sb.toString() : "";
+    }
 }

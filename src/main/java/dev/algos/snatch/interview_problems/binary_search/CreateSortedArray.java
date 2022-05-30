@@ -26,7 +26,7 @@ public class CreateSortedArray {
     }
 
     private int getLeft(List<Integer> list, int num) {
-        int lo = 0, hi = list.size(); //use size if you want to find insert pos
+        int lo = 0, hi = list.size(); //use size if you want to find insert pos #trick
         while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
             if (num <= list.get(mid)) {

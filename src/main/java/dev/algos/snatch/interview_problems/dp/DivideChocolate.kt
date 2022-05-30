@@ -34,7 +34,7 @@ class DivideChocolate {
         var lo = 1
         var hi = sweetness.sum()
         while (lo < hi) {
-            val mid = (lo + hi + 1) / 2 //Quick tip: if you have left = mid, use left + right + 1.
+            val mid = (lo + hi + 1) / 2 //if you have left = mid, use left + right + 1. #trick
             var splits = 0
             var curr = 0
             for (sweet in sweetness) {

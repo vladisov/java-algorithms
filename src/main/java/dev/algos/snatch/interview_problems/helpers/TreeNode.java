@@ -76,9 +76,10 @@ public class TreeNode {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        printInorder(this, sb);
-        return sb.deleteCharAt(sb.length() - 1).toString();
+        return "";
+//        StringBuilder sb = new StringBuilder();
+//        printInorder(this, sb);
+//        return sb.deleteCharAt(sb.length() - 1).toString();
     }
 
     public String toStringPreOrder() {

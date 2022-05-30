@@ -39,15 +39,15 @@ fun numberOfSetsBU(n: Int, k: Int): Int {
     return dp[0][k].int
 }
 
-fun numberOfSets2(n: Int, k: Int): Int {
-    return dp(n, k, 0, 0, Array(n) { Array(k + 1) { Array(2) { null } } }).int
-}
+//fun numberOfSets2(n: Int, k: Int): Int {
+//    return dp(n, k, 0, 0, Array(n) { Array(k + 1) { Array(2) { null } } }).int
+//}
 
 fun dp(n: Int, k: Int, i: Int, start: Int, memo: Array<Array<Array<MInt?>>>): MInt {
     if (k == 0) return MInt(1)
     if (i == n) return MInt(0)
     memo[i][k][start] = memo[i][k][start]
-            ?: dp(n, k, i + 1, start, memo) + dp(n, k - start, i + (start xor 1), (start xor 1), memo)
+        ?: dp(n, k, i + 1, start, memo) + dp(n, k - start, i + (start xor 1), (start xor 1), memo)
     return memo[i][k][start]!!
 }
 

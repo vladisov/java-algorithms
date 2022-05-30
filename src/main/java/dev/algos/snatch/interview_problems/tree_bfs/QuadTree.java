@@ -28,8 +28,8 @@ public class QuadTree {
             for (int j = startCol; j < endCol; j++) {
                 if (grid[i][j] != dummy) {
                     return false;
+
                 }
-            }
         }
         return true;
     }

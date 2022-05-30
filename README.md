@@ -1,4 +1,57 @@
-#### Leetcode questions and answers.
+*This is a complementary repository to my interview prep
+notebook.* [Here!](https://vladisov.notion.site/Algorithms-and-System-Design-1e5201bc1d3a41eaa30f01d4cc5cf27f)
 
-**This is complementary repository of:**
-https://www.notion.so/vladisov/Interview-1e5201bc1d3a41eaa30f01d4cc5cf27f
+### Data structures
+
+[Array list](src/main/java/dev/algos/snatch/data_structures/array)  
+[Linked list](src/main/java/dev/algos/snatch/data_structures/linked_list)  
+[Caches](src/main/java/dev/algos/snatch/data_structures/cache)  
+[Graphs](src/main/java/dev/algos/snatch/data_structures/graph)  
+[Heap](src/main/java/dev/algos/snatch/data_structures/heap)  
+[Queue](src/main/java/dev/algos/snatch/data_structures/queue)  
+[Union Find](src/main/java/dev/algos/snatch/data_structures/union_find)  
+[Tree](src/main/java/dev/algos/snatch/data_structures/tree)  
+[Segment Tree](src/main/java/dev/algos/snatch/data_structures/segment_tree)
+
+### Interview Questions Patterns
+
+[Array](src/main/java/dev/algos/snatch/interview_problems/array)  
+[Backtracking](src/main/java/dev/algos/snatch/interview_problems/backtracking)  
+[Bidirectional BFS](src/main/java/dev/algos/snatch/interview_problems/bidirectional_bfs)  
+[Binary Search](src/main/java/dev/algos/snatch/interview_problems/binary_search)  
+[Bit manipulations](src/main/java/dev/algos/snatch/interview_problems/bit)  
+[Concurrency](src/main/java/dev/algos/snatch/interview_problems/concurrency)  
+[Cyclic Sort](src/main/java/dev/algos/snatch/interview_problems/cyclic_sort)  
+[Dijkstra](src/main/java/dev/algos/snatch/interview_problems/dijkstra)  
+[Dynamic Programming](src/main/java/dev/algos/snatch/interview_problems/dp)  
+[Data Structure Design](src/main/java/dev/algos/snatch/interview_problems/ds_design)  
+[Fast & Slow Pointers](src/main/java/dev/algos/snatch/interview_problems/fast_slow_pointers)  
+[Graph](src/main/java/dev/algos/snatch/interview_problems/graph)  
+[Greedy](src/main/java/dev/algos/snatch/interview_problems/greedy)  
+[Hash Table](src/main/java/dev/algos/snatch/interview_problems/hash_table)  
+[K-Way Merge](src/main/java/dev/algos/snatch/interview_problems/k_way_merge)  
+[Math](src/main/java/dev/algos/snatch/interview_problems/math)  
+[Matrix](src/main/java/dev/algos/snatch/interview_problems/matrix)  
+[Merge Intervals](src/main/java/dev/algos/snatch/interview_problems/merge_intervals)  
+[Minimum Spanning Tree](src/main/java/dev/algos/snatch/interview_problems/minimum_spanning_tree)  
+[Miscellaneous](src/main/java/dev/algos/snatch/interview_problems/miscellaneous)  
+[Monotonic Queue](src/main/java/dev/algos/snatch/interview_problems/monotonic_queue)  
+[Pattern Matching](src/main/java/dev/algos/snatch/interview_problems/pattern_matching)  
+[Prefix Sum](src/main/java/dev/algos/snatch/interview_problems/prefix_sum)  
+[Reservoir Sampling](src/main/java/dev/algos/snatch/interview_problems/reservoir_sampling)  
+[Reversal Linked List](src/main/java/dev/algos/snatch/interview_problems/reversal_linked_list)  
+[Segment Tree](src/main/java/dev/algos/snatch/interview_problems/segment_tree)  
+[Sliding Window](src/main/java/dev/algos/snatch/interview_problems/sliding_window)  
+[Stack](src/main/java/dev/algos/snatch/interview_problems/stack)  
+[Sweep Line](src/main/java/dev/algos/snatch/interview_problems/sweep_line)  
+[Top K](src/main/java/dev/algos/snatch/interview_problems/top_k)  
+[Topological Sort](src/main/java/dev/algos/snatch/interview_problems/topological_sort)  
+[Tree BFS](src/main/java/dev/algos/snatch/interview_problems/tree_bfs)  
+[Tree DFS](src/main/java/dev/algos/snatch/interview_problems/tree_dfs)  
+[Trie](src/main/java/dev/algos/snatch/interview_problems/trie)  
+[Two Heaps](src/main/java/dev/algos/snatch/interview_problems/two_heaps)  
+[Two Pointers](src/main/java/dev/algos/snatch/interview_problems/two_pointers)  
+[Union Find](src/main/java/dev/algos/snatch/interview_problems/union_find)  
+[Xor](src/main/java/dev/algos/snatch/interview_problems/xor)
+
+<a href="https://www.buymeacoffee.com/qcm6tywbghJ"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=qcm6tywbghJ&button_colour=40DCA5&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>

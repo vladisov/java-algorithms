@@ -33,7 +33,7 @@ class AlienDictionaryTest {
 //                "cb",
 //        }), equalTo("zacb"));
 
-        assertThat(instance.alienOrderKhan(new String[]{
+        assertThat(instance.alienOrder(new String[]{
                 "vlxpwiqbsg",
                 "cpwqwqcd",
         }), equalTo("zacb"));

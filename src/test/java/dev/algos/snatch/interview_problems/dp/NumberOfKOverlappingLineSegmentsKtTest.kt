@@ -12,12 +12,6 @@ internal class NumberOfKOverlappingLineSegmentsKtTest {
     }
 
     @Test
-    fun testNKTopDown() {
-        assertEquals(5, numberOfSets2(4, 2))
-        assertEquals(931045476, numberOfSets2(1000, 988))
-    }
-
-    @Test
     fun testBU() {
         assertEquals(5, numberOfSetsBU(4, 2))
         assertEquals(931045476, numberOfSetsBU(1000, 988))

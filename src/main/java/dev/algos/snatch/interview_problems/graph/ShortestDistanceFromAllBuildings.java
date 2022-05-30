@@ -1,68 +1,61 @@
 package dev.algos.snatch.interview_problems.graph;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.HashSet;
 import java.util.Queue;
+import java.util.Set;
 
+/**
+ * https://leetcode.com/problems/shortest-distance-from-all-buildings/
+ */
 public class ShortestDistanceFromAllBuildings {
-    int[][] dirs = new int[][]{
-            {-1, 0},
-            {1, 0},
-            {0, 1},
-            {0, -1}
-    };
+
+    /**
+     * Time O(N * M * houses)
+     * Space O(N * M)
+     */
+    int[][] dirs = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
 
     public int shortestDistance(int[][] grid) {
-        int min = Integer.MAX_VALUE;
-        //convert
-        List<int[]> houses = new ArrayList<>();
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
+        int n = grid.length, m = grid[0].length, housesTotal = 0;
+        Queue<int[]> queue = new ArrayDeque<>();
+        Set<String> visited = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 if (grid[i][j] == 1) {
-                    houses.add(new int[]{i, j});
+                    int index = i * n + j;
+                    queue.add(new int[]{index, i, j, 0});
+                    String key = index + " " + i + " " + j;
+                    visited.add(key);
+                    housesTotal++;
                 }
-                grid[i][j] *= -1;
+                grid[i][j] = -grid[i][j];
             }
         }
-
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] == '0') {
-                    min = Math.min(min, getDistance(grid, i, j, houses));
-                }
-            }
-        }
-        return min == Integer.MAX_VALUE ? -1 : min;
-    }
-
-    int getDistance(int[][] grid, int i, int j, List<int[]> houses) {
-        Queue<int[]> queue = new LinkedList<>();
-        int[][] dist = new int[grid.length][grid[i].length];
-        queue.add(new int[]{i, j});
-
+        int[][] reach = new int[n][m];
         while (!queue.isEmpty()) {
-            int[] curr = queue.poll();
-            int distance = dist[curr[0]][curr[1]];
-            for (int[] dir : dirs) {
-                int[] next = new int[]{curr[0] + dir[0], curr[1] + dir[1]};
-                if (isWayToGo(next, dist, i, j, grid)) {
-                    dist[next[0]][next[1]] = distance + 1;
-                    queue.add(next);
+            int[] node = queue.poll();
+            for (var dir : dirs) {
+                int i = dir[0] + node[1];
+                int j = dir[1] + node[2];
+                int cost = node[3];
+                int index = node[0];
+                String key = index + " " + i + " " + j;
+                if (i < 0 || j < 0 || i == n || j == m || grid[i][j] < 0 || visited.contains(key)) continue;
+                grid[i][j] += 1 + cost;
+                reach[i][j]++;
+                queue.add(new int[]{index, i, j, 1 + cost});
+                visited.add(key);
+            }
+        }
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] > 0 && reach[i][j] == housesTotal) {
+                    ans = Math.min(ans, grid[i][j]);
                 }
             }
         }
-
-        int distance = 0;
-        for (int[] house : houses) {
-            distance += dist[house[0]][house[1]];
-        }
-        return distance;
-    }
-
-    boolean isWayToGo(int[] next, int[][] dist, int i, int j, int[][] grid) {
-        return next[0] != i && next[1] != j && next[0] >= 0 && next[0] < grid.length &&
-                next[1] >= 0 && next[1] < grid[next[0]].length && grid[next[0]][next[1]] != -2
-                && grid[next[0]][next[1]] != -1 && dist[next[0]][next[1]] == 0;
+        return ans == Integer.MAX_VALUE ? -1 : ans;
     }
 }
