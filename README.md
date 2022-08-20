@@ -1,7 +1,7 @@
 *This is a complementary repository to my interview prep
 notebook.* [Here!](https://vladisov.notion.site/Algorithms-and-System-Design-1e5201bc1d3a41eaa30f01d4cc5cf27f)
 
-### Data structures
+### Data structures 
 
 [Array list](src/main/java/dev/algos/snatch/data_structures/array)  
 [Linked list](src/main/java/dev/algos/snatch/data_structures/linked_list)  

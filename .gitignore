@@ -2,3 +2,8 @@ target
 .idea
 *.iml
 tmp.txt
+*.json
+*.prefs
+.project
+.factorypath
+.classpath

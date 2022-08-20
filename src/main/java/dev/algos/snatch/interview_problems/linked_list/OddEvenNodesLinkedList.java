@@ -1,4 +1,4 @@
-package dev.algos.snatch.interview_problems.reversal_linked_list;
+package dev.algos.snatch.interview_problems.linked_list;
 
 import dev.algos.snatch.interview_problems.helpers.ListNode;
 

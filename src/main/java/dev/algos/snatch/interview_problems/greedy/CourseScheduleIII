@@ -1,0 +1,29 @@
+import heapq
+from typing import List
+
+
+'''
+Input: courses = [[100,200],[200,1300],[1000,1250],[2000,3200]]
+
+100,1500
+200,1300
+1000,1250
+1250,3200
+
+'''
+
+
+class Solution:
+    def scheduleCourse(self, courses: List[List[int]]) -> int:
+        heap = []
+        total = 0
+        for dur, by in sorted(courses, key=lambda c: c[1]):
+            if total + dur > by:
+                if heap and dur < -heap[0]:
+                    total -= -heapq.heappop(heap)
+                    heapq.heappush(heap, -dur)
+                    total += dur
+            else:
+                total += dur
+                heapq.heappush(heap, -dur)
+        return len(heap)
